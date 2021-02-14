@@ -1,0 +1,69 @@
+[{"Version":"1.0.7715.32773","ReleaseNotes":"
+
+1.0.7715.32773 (2021-02-14)
+- A well overdue update - last update was 4 years ago.
+- Quick shoutout to my ex-colleagues.  Hope you're all doing well.
+- Removed the + and - buttons from the UI as they aren't really necessary
+- Made it easier to move time from one task to another
+	- Press 'Ctrl -' (Control minus) to subtract one minute from the current task and add it to the 'Nothing' task
+	- Press 'Ctrl+Shift -' (Control shift minus) to subtract 5 minutes from the current task and add it to the 'Nothing' task
+	- Press 'Ctrl +' (Control plus) to add one minute to the current task and subtract it from the 'Nothing' task
+	- Press 'Ctrl+Shift +' (Control shift minus) to add one 5 minutes to the current task and subtract it from the 'Nothing' task
+- Updated settings form
+- Font no longer appears blurry when using scaling over 100% in Windows
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1.0.5906.33511 (2016-03-03)
+- Fixed Ctrl+s/Ctrl+d changing selected tasks when opening summary window
+- Fixed Licence agreement text
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1.0.5658.42685 (2015-06-29)
+ - Set correct user-agent for update check
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+1.0.5644.1546 (2015-06-14)
+ - Updated download page and licence agreement text.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+1.0.5610.26587 (2015-05-12)
+ - Entering a new item whilst the form is minimised will minimise the form again when you hit enter.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+1.0.5606.15604 (2015-05-08)
+ - Ctrl-a selects all text in the edit field as it should.
+ - Allowed the maximum size of the main form go larger.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+1.0.5605.15275 (2015-05-07)
+  - Changed ITTCustomCode interface to allow for easier async custom coding.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+1.0.5603.35455 (2015-05-05)
+ - Bug fixes
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+1.0.5602.16124 (2015-05-04)
+ - Typing in a task that already exists now just selects the existing task instead of creating a new one
+ - Ctrl-C and Ctrl-V on the main form (minimised or maximised) will copy/paste the current task to/from the clipboard
+ - Ctrl+0 to Ctrl+9 can be used to set the task.  Ctrl+0 will set the task to 'Off'; Ctrl+1 will set the task to 'Nothing', etc.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+1.0.5598.16622 (2015-04-30)
+ - Typing text from the main form (minimised or maximised) now sets focus to the text field so can enter a new task immediately.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+1.0.5596.16102 (2015-04-29)
+- Added auto-start on Windows start option in Help/Settings
+- Added ToolTip for the 'Check for updates' button on the Help/Settings form.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+1.0.5590.37228 (2015-04-23)
+- Added installer
+- Added update checker
+- Removed Ctrl+C keyboard shortcut in the summary form.
+- Added a 'copy to clipboard' function for each group calculator.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+"}]
