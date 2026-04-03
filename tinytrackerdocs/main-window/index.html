@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="auto">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://plasticcheese.com/tinytrackerdocs/main-window/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Main Window - TinyTracker User Guide</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" disabled>
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <link href="../stylesheets/extra.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">TinyTracker User Guide</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Using TinyTracker</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Main Window</a>
+</li>
+                                    
+<li>
+    <a href="../summary/" class="dropdown-item">Summary</a>
+</li>
+                                    
+<li>
+    <a href="../summary-calculator/" class="dropdown-item">Summary Calculator</a>
+</li>
+                                    
+<li>
+    <a href="../settings/" class="dropdown-item">Settings</a>
+</li>
+                                    
+<li>
+    <a href="../shortcuts/" class="dropdown-item">Shortcuts</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Reference</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../data-files/" class="dropdown-item">Data Files</a>
+</li>
+                                    
+<li>
+    <a href="../custom-functions/" class="dropdown-item">Custom Functions</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href=".." class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../summary/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item dropdown">
+                              <button id="theme-menu" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static" aria-label="Toggle theme" class="nav-link dropdown-toggle">
+                                <i class="fa-solid fa-circle-half-stroke fa-fw"></i>
+                                <span class="d-lg-none ms-2">Toggle theme</span>
+                              </button>
+                              <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                  <button class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+                                    <i class="fa-solid fa-sun fa-fw"></i>
+                                    <span class="ms-2">Light</span>
+                                    <i class="fa-solid fa-check ms-auto d-none"></i>
+                                  </button>
+                                </li>
+                                <li>
+                                  <button class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+                                    <i class="fa-solid fa-moon fa-fw"></i>
+                                    <span class="ms-2">Dark</span>
+                                    <i class="fa-solid fa-check ms-auto d-none"></i>
+                                  </button>
+                                </li>
+                                <li>
+                                  <button class="dropdown-item d-flex align-items-center" data-bs-theme-value="auto" aria-pressed="true">
+                                    <i class="fa-solid fa-circle-half-stroke fa-fw"></i>
+                                    <span class="ms-2">Auto</span>
+                                    <i class="fa-solid fa-check ms-auto"></i>
+                                  </button>
+                                </li>
+                              </ul>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <script src="../js/darkmode.js"></script>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#main-window" class="nav-link">Main Window</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#built-in-tasks" class="nav-link">Built-in tasks</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#add-a-task" class="nav-link">Add a task</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#select-reorder-and-remove-tasks" class="nav-link">Select, reorder, and remove tasks</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#minimize-and-restore" class="nav-link">Minimize and restore</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#quick-time-corrections" class="nav-link">Quick time corrections</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#labels" class="nav-link">Labels</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#notes" class="nav-link">Notes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#open-the-data-folder" class="nav-link">Open the data folder</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="main-window">Main Window</h1>
+<p>The main window is where you choose the task you are currently working on.</p>
+<p><img alt="Main window" src="../images/screenshots/mainui-no-tasks.png" /></p>
+<h2 id="built-in-tasks">Built-in tasks</h2>
+<ul>
+<li><code>OFF</code> stops time tracking.</li>
+<li><code>Nothing</code> tracks time without assigning it to a named task yet.</li>
+</ul>
+<p>These two entries stay at the top of the list and cannot be removed.</p>
+<h2 id="add-a-task">Add a task</h2>
+<ol>
+<li>Click in the task box at the bottom of the window.</li>
+<li>Type the task name you want.</li>
+<li>Press <code>Enter</code>.</li>
+</ol>
+<p>TinyTracker adds the task to the list and starts tracking it straight away.</p>
+<h2 id="select-reorder-and-remove-tasks">Select, reorder, and remove tasks</h2>
+<ul>
+<li>Click a task to start tracking it.</li>
+<li>Drag a task to move it somewhere else in the list.</li>
+<li>Double-click a task to copy its name into the task box.</li>
+<li>Press <code>Delete</code> to remove the selected task.</li>
+<li>If you manually edit today's CSV while TinyTracker is open, TinyTracker will update accordingly.</li>
+</ul>
+<h2 id="minimize-and-restore">Minimize and restore</h2>
+<ul>
+<li>Double-click the window title bar, or press <code>Esc</code>, to minimize or restore the window.</li>
+<li>When minimized, TinyTracker becomes a tiny movable label.</li>
+</ul>
+<div class="image-stack image-stack--indented">
+  <img src="../images/screenshots/off-minimised.png" alt="TinyTracker minimized with OFF selected">
+  <img src="../images/screenshots/sampletask-minimised.png" alt="TinyTracker minimized with a task selected">
+</div>
+
+<ul>
+<li>If <strong>Show time when minimised</strong> is enabled, the minimized label also shows the time already spent on the current task.</li>
+</ul>
+<h2 id="quick-time-corrections">Quick time corrections</h2>
+<p>TinyTracker can shift time between <code>Nothing</code> and the selected task without opening the CSV file.</p>
+<ul>
+<li><code>Ctrl</code> + <code>+</code> moves 1 minute from <code>Nothing</code> to the selected task.</li>
+<li><code>Ctrl</code> + <code>Shift</code> + <code>+</code> moves 5 minutes from <code>Nothing</code> to the selected task.</li>
+<li><code>Ctrl</code> + <code>-</code> moves 1 minute from the selected task back to <code>Nothing</code>.</li>
+<li><code>Ctrl</code> + <code>Shift</code> + <code>-</code> moves 5 minutes from the selected task back to <code>Nothing</code>.</li>
+</ul>
+<p>This is useful when you forgot to switch tasks straight away and want to tidy up the day.</p>
+<h2 id="labels">Labels</h2>
+<p>Press <code>Ctrl+L</code> to write a zero-minute label into today's CSV file.</p>
+<ul>
+<li>If the task box is empty, TinyTracker writes <code>label</code>.</li>
+<li>If the task box contains text, TinyTracker writes <code>label: your text</code>.</li>
+</ul>
+<p>Labels are useful for adding a marker or note into the time log.</p>
+<h2 id="notes">Notes</h2>
+<p>Press <code>Ctrl+N</code> to open a small note window.</p>
+<p>You can use notes as floating reminders while you work.  They are not saved to disk, so once you close them or close TinyTracker, they are gone.</p>
+<p>Press <code>Ctrl+N</code> when you want to create a new note. TinyTracker opens a small blank note window ready for typing.</p>
+<p><img alt="New blank note window" src="../images/screenshots/note-new-note.png" /></p>
+<p>Type directly into the note window. New notes open in edit mode straight away.</p>
+<p><img alt="Entering a note" src="../images/screenshots/note-entering-a-note.png" /></p>
+<p>Press <code>Enter</code> to add another line. When you are done, press <code>Esc</code> to finish editing and leave the note visible on screen.</p>
+<p><img alt="Completing a note by pressing Escape" src="../images/screenshots/note-completing-a-note-by-pressing-escape.png" /></p>
+<p>If you want to change the note later, double-click the note window to edit it again.</p>
+<p><img alt="Re-editing a note" src="../images/screenshots/note-re-editing-a-note.png" /></p>
+<p>To close a note, click on the small 'x' on the top right of the note window</p>
+<h2 id="open-the-data-folder">Open the data folder</h2>
+<p>Press <code>Ctrl+.</code> to open the folder that contains your TinyTracker files.</p>
+<p>This is the easiest way to find your daily CSV files, <code>list.txt</code>, and the <code>CustomFunctions</code> folder.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

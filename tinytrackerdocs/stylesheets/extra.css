@@ -1,0 +1,112 @@
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1rem auto;
+  border: 1px solid #d6dce5;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(33, 43, 54, 0.08);
+  background: #fff;
+}
+
+.image-stack {
+  display: grid;
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+
+.image-stack img {
+  margin: 0;
+  width: auto;
+  max-width: 100%;
+}
+
+.image-stack--indented {
+  margin-left: 1.5rem;
+  justify-content: start;
+}
+
+h1,
+h2,
+h3 {
+  scroll-margin-top: 1rem;
+}
+
+blockquote {
+  margin: 1rem 0;
+  padding: 0.8rem 1rem;
+  border-left: 4px solid #2b6cb0;
+  background: #f5f9ff;
+}
+
+table {
+  width: 100%;
+}
+
+code {
+  white-space: nowrap;
+}
+
+.navbar.bg-primary {
+  background-color: #313131 !important;
+  background-image: none !important;
+  border-color: #313131 !important;
+}
+
+.navbar.bg-primary .navbar-brand,
+.navbar.bg-primary .navbar-nav .nav-link,
+.navbar.bg-primary .navbar-text,
+.navbar.bg-primary .navbar-nav .show > .nav-link,
+.navbar.bg-primary .navbar-nav .active > .nav-link,
+.navbar.bg-primary .navbar-nav .active > .nav-link:focus,
+.navbar.bg-primary .navbar-nav .active > .nav-link:hover {
+  color: #f4f4f4 !important;
+  text-shadow: none;
+}
+
+.navbar.bg-primary .navbar-nav .nav-link:hover,
+.navbar.bg-primary .navbar-nav .nav-link:focus,
+.navbar.bg-primary .navbar-brand:hover,
+.navbar.bg-primary .navbar-brand:focus {
+  color: #ffffff !important;
+  background-color: #3d3d3d;
+}
+
+.navbar.bg-primary .navbar-toggler {
+  border-color: #4a4a4a;
+}
+
+.navbar.bg-primary .navbar-toggler:focus {
+  box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.15);
+}
+
+.dropdown-menu {
+  background-color: #3a3a3a;
+  border-color: #4a4a4a;
+}
+
+.dropdown-item,
+.dropdown-header {
+  color: #f4f4f4;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+  color: #ffffff;
+  background-color: #4a4a4a;
+}
+
+.dropdown-divider {
+  border-top-color: #4a4a4a;
+}
+
+@media (max-width: 700px) {
+  table {
+    display: block;
+    overflow-x: auto;
+  }
+
+  .image-stack--indented {
+    margin-left: 0.75rem;
+  }
+}
