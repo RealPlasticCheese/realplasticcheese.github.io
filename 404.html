@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Page Not Found</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex">
+    <style>
+        body {
+            font-family: Arial, Verdana, sans-serif;
+            margin: 0;
+            background: #000;
+            color: #fff;
+        }
+
+        main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 48px 20px;
+        }
+
+        a {
+            color: #9ecbff;
+        }
+    </style>
+    <script>
+        (function () {
+            var path = window.location.pathname;
+            var normalizedPath = path.replace(/^\/tinytracker(?=\/|$)/i, "/tinytracker");
+
+            if (normalizedPath !== path) {
+                window.location.replace(normalizedPath + window.location.search + window.location.hash);
+            }
+        })();
+    </script>
+</head>
+<body>
+    <main>
+        <h1>Page not found</h1>
+        <p>If you were looking for TinyTracker, try <a href="/tinytracker/">/tinytracker/</a>.</p>
+        <p><a href="/">Return to plasticcheese.com</a></p>
+    </main>
+</body>
+</html>
