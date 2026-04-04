@@ -1,6 +1,6 @@
 [
   {
     "Version": "1.0.8000.00000",
-    "ReleaseNotes": "\n\n1.0.8000.00000 (2026-04-04)\n- Major 2026 refresh release.\n- Download the latest installer from https://plasticcheese.com/tinytracker/download/\n- TinyTracker now uses a new structured update feed hosted at https://tinytracker.plasticcheese.com/update.json\n- Upgraded TinyTracker to .NET 10 and aligned support to Windows 10 22H2 or later.\n- Reworked the application around dependency injection and extracted controllers, services, and workflows to reduce coupling and improve test coverage.\n- Hardened file locking, atomic writes, CSV/time-log parsing, elapsed-time reads, time reallocation maths, custom plugin loading, and update checks.\n- Added Azure DevOps CI, installer artifacts, GitHub Releases publishing, MkDocs user documentation, a new download page, and versioned latest-download links.\n- Fixed a range of UI issues including summary layout/search, minimised window sizing, minimised restore position, tooltip freezes, and persisted main window size and location.\n- This release switches TinyTracker to the new update feed for future update checks.\n"
+    "ReleaseNotes": "\n\n1.0.8000.00000 (2026-04-04)\n- Major 2026 refresh release.\n- Download the latest installer from https://plasticcheese.com/tinytracker/download/"
   }
 ]
