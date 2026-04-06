@@ -45,7 +45,7 @@ a {
 
 .main-image-link:hover img,
 .main-image-link:focus-visible img {
-    transform: scale(1.06);
+    transform: scale(1.2);
 }
 
 .main-image-link:focus-visible {
