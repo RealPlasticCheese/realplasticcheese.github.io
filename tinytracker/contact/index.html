@@ -6,9 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        <link rel="canonical" href="https://plasticcheese.com/tinytracker/data-files/">
+        <link rel="canonical" href="https://plasticcheese.com/tinytracker/contact/">
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Data Files - TinyTracker</title>
+        <title>Contact - TinyTracker</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/fontawesome.min.css" rel="stylesheet">
         <link href="../css/brands.min.css" rel="stylesheet">
@@ -75,11 +75,11 @@
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Advanced</a>
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Advanced</a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="./" class="dropdown-item active" aria-current="page">Data Files</a>
+    <a href="../data-files/" class="dropdown-item">Data Files</a>
 </li>
                                     
 <li>
@@ -92,7 +92,7 @@
                                 </ul>
                             </li>
                             <li class="nav-item">
-                                <a href="../contact/" class="nav-link">Contact</a>
+                                <a href="./" class="nav-link active" aria-current="page">Contact</a>
                             </li>
                         </ul>
 
@@ -103,12 +103,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../shortcuts/" class="nav-link">
+                                <a rel="prev" href="../creating-custom-functions/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../custom-functions/" class="nav-link">
+                                <a rel="next" class="nav-link disabled">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -160,33 +160,9 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="1"><a href="#data-files" class="nav-link">Data Files</a>
+            <li class="nav-item" data-bs-level="1"><a href="#contact" class="nav-link">Contact</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-bs-level="2"><a href="#default-location" class="nav-link">Default location</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#task-list" class="nav-link">Task list</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#daily-time-logs" class="nav-link">Daily time logs</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#locked-time" class="nav-link">Locked time</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#custom-functions-folder" class="nav-link">Custom functions folder</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#tips-when-opening-csv-files" class="nav-link">Tips when opening CSV files</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#if-a-file-is-malformed" class="nav-link">If a file is malformed</a>
+            <li class="nav-item" data-bs-level="2"><a href="#email" class="nav-link">Email</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -197,42 +173,13 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="data-files">Data Files</h1>
-<p>TinyTracker stores its data in a small set of plain files.</p>
-<h2 id="default-location">Default location</h2>
-<p>If the <strong>Path</strong> setting is blank, TinyTracker stores data in:</p>
-<p><code>%LOCALAPPDATA%\PlasticCheese\TinyTracker</code></p>
-<p>If you choose a custom path, TinyTracker still creates and uses a <code>TinyTracker</code> subfolder inside it.</p>
-<h2 id="task-list">Task list</h2>
-<p>Your custom tasks are stored in:</p>
-<p><code>list.txt</code></p>
-<p>TinyTracker adds <code>OFF</code> and <code>Nothing</code> automatically, so they do not need to appear in this file.</p>
-<h2 id="daily-time-logs">Daily time logs</h2>
-<p>Each day uses a separate CSV file named like this:</p>
-<p><code>2026-03-07-tinytracker.csv</code></p>
-<p>Each row stores:</p>
-<ul>
-<li>a timestamp</li>
-<li>the task name</li>
-<li>the number of minutes</li>
-</ul>
-<p>Example:</p>
-<p><code>2026-03-07T09:00:00,"Task A",15</code></p>
-<h2 id="locked-time">Locked time</h2>
-<p>If your PC is locked while a task is active, TinyTracker records that task with <code>(Locked)</code> added to the name.</p>
-<h2 id="custom-functions-folder">Custom functions folder</h2>
-<p>TinyTracker also creates:</p>
-<p><code>CustomFunctions</code></p>
-<p>This folder is used for optional custom DLL-based actions.</p>
-<h2 id="tips-when-opening-csv-files">Tips when opening CSV files</h2>
-<ul>
-<li>You can open the CSV files in a spreadsheet program or a text editor.</li>
-<li>Spreadsheet programs such as Excel may lock the file while it is open.</li>
-<li>If TinyTracker says it cannot write to the file, close the spreadsheet and try again.</li>
-<li>If you edit today's CSV while TinyTracker is open and <strong>Show time in main form</strong> is enabled, TinyTracker refreshes the displayed task totals automatically after the file changes.</li>
-</ul>
-<h2 id="if-a-file-is-malformed">If a file is malformed</h2>
-<p>TinyTracker can still use valid rows even if one row is damaged, but you should fix the bad line in a text editor when you can.</p></div>
+<h1 id="contact">Contact</h1>
+<p>If you have a question about TinyTracker, found a bug, or want to suggest an improvement, send me an email.</p>
+<p>For bug reports, including your TinyTracker version and a short description of what happened will help me understand the issue faster.</p>
+<p>You can find the version number by pressing <code>F1</code> to open the Help/About screen.</p>
+<p><img alt="TinyTracker version location" src="../images/screenshots/version.jpg" /></p>
+<h2 id="email">Email</h2>
+<p><img alt="TinyTracker contact email address" src="../images/plasticcheeseemailaddress.png" /></p></div>
             </div>
         </div>
 
