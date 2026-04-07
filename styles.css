@@ -11,9 +11,13 @@ a {
 
 .homepage {
     width: min(100%, 1200px);
+    min-height: 100vh;
+    min-height: 100svh;
     margin: 0 auto;
-    padding: 12px 10px 30px;
+    padding: clamp(16px, 4vw, 48px);
     box-sizing: border-box;
+    display: grid;
+    place-items: center;
 }
 
 .main-title {
@@ -26,7 +30,6 @@ a {
 }
 
 .main-image {
-    margin-top: 30px;
     text-align: center;
 }
 
@@ -38,6 +41,9 @@ a {
 .main-image img {
     display: block;
     max-width: 100%;
+    max-height: calc(100vh - clamp(32px, 8vw, 96px));
+    max-height: calc(100svh - clamp(32px, 8vw, 96px));
+    width: auto;
     height: auto;
     transition: transform 220ms ease;
     transform-origin: center center;
@@ -51,15 +57,4 @@ a {
 .main-image-link:focus-visible {
     outline: 2px solid #ffffff;
     outline-offset: 4px;
-}
-
-@media (max-width: 600px) {
-    .homepage {
-        padding-top: 16px;
-        padding-bottom: 24px;
-    }
-
-    .main-image {
-        margin-top: 24px;
-    }
 }
