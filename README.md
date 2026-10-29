@@ -32,8 +32,12 @@ publishes the files after the pull request is merged.
 ## KMSwitcher feature content
 
 The project page uses the shared site styles plus `kmswitcher/site.css`.
-`kmswitcher/edge-demo.js` enhances the labelled screen-edge illustration; the
-feature content, diagrams, anchor navigation, and expandable lists also work
+`kmswitcher/edge-demo.js` enhances the hero handoff illustration. The additional
+`usage-demos.js` and `usage-demos.css` provide a four-direction desk layout, a
+keyboard-shortcut sequence, and text/image/file clipboard walkthroughs. Playback
+is visitor-initiated and animations follow the shared reduced-motion preference.
+These illustrations use sample content and never access devices or the system
+clipboard. Static content, diagrams, navigation, and expandable lists also work
 without JavaScript.
 
 Feature copy was checked against KMSwitcher source commit `8ea9337`, particularly

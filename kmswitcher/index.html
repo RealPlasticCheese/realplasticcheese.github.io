@@ -9,7 +9,9 @@
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="stylesheet" href="/assets/site.css">
     <link rel="stylesheet" href="/kmswitcher/site.css">
+    <link rel="stylesheet" href="/kmswitcher/usage-demos.css">
     <script src="/kmswitcher/edge-demo.js" defer></script>
+    <script src="/kmswitcher/usage-demos.js" defer></script>
 </head>
 <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -83,6 +85,29 @@
                 <h2 id="switching-title">Your computers, arranged like your desk.</h2>
                 <p class="section-lead">Place your stations in the companion's layout editor. When you push through an outer screen edge, KMSwitcher finds the next ready screen in that direction and brings your keyboard and mouse with you.</p>
             </div>
+            <figure class="usage-demo desk-demo" data-desk-demo data-station="2" aria-labelledby="desk-demo-caption">
+                <div class="usage-demo-heading"><p class="eyebrow">Try a desk layout</p><span>Interactive illustration</span></div>
+                <div class="desk-walkthrough">
+                    <div id="desk-map" class="desk-map">
+                        <div class="desk-station" data-station-id="1"><span>01 / Workstation</span><strong>Above the laptop</strong><small>Ready</small></div>
+                        <p class="desk-map-note" aria-hidden="true">↑ ↓ ← →<span>Your desk has more<br>than one direction.</span></p>
+                        <div class="desk-station" data-station-id="2"><span>02 / Laptop</span><strong>At the centre of your desk</strong><small>Selected</small></div>
+                        <div class="desk-station" data-station-id="3"><span>03 / Second computer</span><strong>To the right</strong><small>Ready</small></div>
+                        <svg class="desk-pointer" width="25" height="31" viewBox="0 0 25 31" aria-hidden="true"><path d="M2 2v24l6-6 5 10 5-3-5-9h10Z" fill="currentColor" stroke="#101010" stroke-width="2" /></svg>
+                    </div>
+                    <div class="desk-demo-controls">
+                        <p class="demo-status" aria-live="polite" aria-atomic="true">Laptop selected. Move up to the workstation or right to the second computer.</p>
+                        <div class="direction-buttons" data-demo-control hidden aria-label="Illustrated screen-edge directions">
+                            <button type="button" data-direction="up" aria-controls="desk-map">↑ <span>Move up</span></button>
+                            <button type="button" data-direction="left" aria-controls="desk-map" disabled>← <span>Move left</span></button>
+                            <button type="button" data-direction="down" aria-controls="desk-map" disabled>↓ <span>Move down</span></button>
+                            <button type="button" data-direction="right" aria-controls="desk-map">→ <span>Move right</span></button>
+                        </div>
+                        <p class="demo-help">Only directions with a neighbouring station are enabled. Try up, down, right, then left to return to the laptop.</p>
+                    </div>
+                </div>
+                <figcaption id="desk-demo-caption">An example arrangement. The pointer, keyboard, and mouse follow the selected computer; empty directions don't wrap around.</figcaption>
+            </figure>
             <dl class="feature-grid">
                 <div><dt>Go in all four directions.</dt><dd>Move left, right, up, or down. A computer above your laptop can be above it in your layout too. Receiver numbers don't dictate where screens belong.</dd></div>
                 <div><dt>Keep your multi-monitor desktop.</dt><dd>Moving between monitors on the same computer stays normal. Switching happens only at exposed outer edges, including the exposed parts of offset monitors.</dd></div>
@@ -95,9 +120,13 @@
                 <h3>Make the edge feel right.</h3>
                 <p>Adjust the edge delay and corner exclusion to suit your desk. Held keys or mouse buttons block automatic handoffs, and a short arrival cooldown prevents bouncing straight back. Pause automatic switching locally from the tray, or pause it for the whole desk.</p>
             </div>
-            <div id="shortcuts" class="shortcut-strip">
+            <div id="shortcuts" class="shortcut-strip" data-shortcut-demo data-step="idle">
                 <div><p class="eyebrow">Prefer the keyboard?</p><h3>Double-tap. Pick a computer.</h3><p>Double-tap your trigger, then press a receiver number. Ctrl is the default; change the key and timing in preferences.</p></div>
-                <div class="shortcut-keys" aria-label="Ctrl, Ctrl, then a number from 1 to 7"><kbd>Ctrl</kbd><kbd>Ctrl</kbd><span>then</span><kbd>1–7</kbd></div>
+                <div class="shortcut-example">
+                    <div class="shortcut-keys" aria-label="Example: Ctrl, Ctrl, then 2"><kbd data-key-step="0">Ctrl</kbd><kbd data-key-step="1">Ctrl</kbd><span>then</span><kbd data-key-step="2">2</kbd></div>
+                    <button class="usage-button" type="button" data-play-demo data-demo-control hidden>Play the shortcut</button>
+                    <p class="demo-status" aria-live="polite" aria-atomic="true">Illustration: two Ctrl taps, then 2, select computer 2.</p>
+                </div>
             </div>
         </section>
 
@@ -107,6 +136,24 @@
                 <h2 id="sharing-title">Copy here. Use it over there.</h2>
                 <p class="section-lead">Copy normally, then choose a destination from the companion's tray menu. You decide when to send: copying something or crossing a screen edge never sends it automatically.</p>
             </div>
+            <figure class="usage-demo clipboard-demo" data-clipboard-demo data-step="idle" aria-labelledby="clipboard-demo-caption">
+                <div class="usage-demo-heading"><p class="eyebrow">Follow a clipboard transfer</p><span>Interactive illustration</span></div>
+                <div class="clipboard-demo-toolbar" data-demo-control hidden>
+                    <label for="demo-content-type">Show me</label>
+                    <select id="demo-content-type"><option value="text">Plain text</option><option value="image">An image</option><option value="files">Files and folders</option></select>
+                    <button class="usage-button" type="button" data-play-demo>Play the transfer</button>
+                </div>
+                <ol class="transfer-stages" aria-label="Illustrated transfer steps"><li>Copy</li><li>Choose destination</li><li>Transfer</li><li>Receive</li></ol>
+                <div class="transfer-panels">
+                    <div class="transfer-panel transfer-source"><p class="eyebrow">Computer 1</p><strong data-source-preview>Desk notes</strong><span>Source clipboard</span></div>
+                    <div class="transfer-panel transfer-menu"><p class="eyebrow">Companion tray</p><strong>Send clipboard</strong><span>to Computer 2 →</span></div>
+                    <div class="transfer-panel transfer-destination"><p class="eyebrow">Computer 2</p><strong data-destination-preview>Waiting for an item</strong><span data-destination-state>Destination clipboard unchanged</span></div>
+                </div>
+                <div class="transfer-track" aria-hidden="true"><span></span></div>
+                <p class="demo-status" aria-live="polite" aria-atomic="true">Choose a destination explicitly. Plain text is ready to paste after it arrives.</p>
+                <button class="usage-button" type="button" data-accept-transfer hidden>Illustrate acceptance</button>
+                <figcaption id="clipboard-demo-caption">Illustrated content only. Images and files wait for acceptance; plain text is placed on the destination clipboard after verification.</figcaption>
+            </figure>
             <div class="sharing-types">
                 <article><p class="eyebrow">Text</p><h3>Ready for your next paste.</h3><p>Received plain Unicode text goes straight onto the destination clipboard after verification. Switch over and paste as usual.</p></article>
                 <article><p class="eyebrow">Formatting &amp; images</p><h3>Keep more than the words.</h3><p>Send HTML, RTF, and images as PNG. Accept the incoming item with <strong>Put on clipboard</strong>, then paste it into your app.</p></article>
