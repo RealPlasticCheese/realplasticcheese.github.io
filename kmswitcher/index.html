@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="KMSwitcher is an ESP32-based keyboard and mouse switcher with one controller and up to seven paired computer receivers.">
+    <title>KMSwitcher | plasticcheese</title>
+    <link rel="canonical" href="https://plasticcheese.com/kmswitcher/">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header shell">
+        <a class="brand" href="/home/" aria-label="plasticcheese home">
+            <img src="/plasticcheese.jpg" alt="" width="90" height="84">
+            <span class="brand-name">plasticcheese</span>
+        </a>
+        <nav class="site-nav" aria-label="Main navigation">
+            <a href="/home/">All projects</a>
+            <a href="https://frank.tzanabetis.com/">About Frank <span aria-hidden="true">↗</span></a>
+        </nav>
+    </header>
+
+    <main id="main" class="shell">
+        <section class="intro product-intro" aria-labelledby="product-title">
+            <div>
+                <p class="eyebrow">KMSwitcher</p>
+                <p class="status">In development</p>
+                <h1 id="product-title">One keyboard.<br>One mouse.<br><span>More computers.</span></h1>
+                <p class="lead">Share your keyboard and mouse across computers with a dedicated ESP32 controller and a USB receiver for each computer.</p>
+                <div class="intro-actions">
+                    <a class="button" href="#how-it-works">How it works <span aria-hidden="true">↓</span></a>
+                    <a href="/home/">All projects</a>
+                </div>
+            </div>
+
+            <figure class="setup">
+                <p class="eyebrow">The hardware at a glance</p>
+                <div class="setup-input">
+                    <svg width="52" height="28" viewBox="0 0 52 28" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                        <rect x="1" y="1" width="50" height="26" rx="3" />
+                        <path d="M7 8h4m4 0h4m4 0h4m4 0h4m4 0h6M7 14h4m4 0h4m4 0h4m4 0h4m4 0h6M7 20h5m4 0h20m4 0h5" />
+                    </svg>
+                    <span>Keyboard + mouse</span>
+                </div>
+                <div class="setup-connection" aria-hidden="true"></div>
+                <div class="setup-controller">
+                    <strong>USB hub + controller</strong>
+                    <span>ESP32-S3</span>
+                </div>
+                <p class="setup-radio">↓ &nbsp; ESP-NOW wireless &nbsp; ↓</p>
+                <div class="setup-computers">
+                    <div class="setup-computer is-selected">
+                        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                            <rect x="3" y="4" width="26" height="18" rx="2" /><path d="M16 22v6m-6 0h12" />
+                        </svg>
+                        <span>Computer 1</span>
+                        <small>S2 · Selected</small>
+                    </div>
+                    <div class="setup-computer">
+                        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                            <rect x="3" y="4" width="26" height="18" rx="2" /><path d="M16 22v6m-6 0h12" />
+                        </svg>
+                        <span>Computer 2</span>
+                        <small>S2 receiver</small>
+                    </div>
+                    <div class="setup-computer">
+                        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                            <rect x="3" y="4" width="26" height="18" rx="2" /><path d="M16 22v6m-6 0h12" />
+                        </svg>
+                        <span>Computer 3</span>
+                        <small>S2 receiver</small>
+                    </div>
+                </div>
+                <figcaption>Illustrated setup · Up to 7 paired receivers</figcaption>
+            </figure>
+        </section>
+
+        <section id="how-it-works" class="how-it-works" aria-labelledby="how-title">
+            <p class="eyebrow">A shared setup, a different destination</p>
+            <h2 id="how-title">How it works</h2>
+            <ol class="steps">
+                <li>
+                    <p class="eyebrow" aria-hidden="true">01 / Connect</p>
+                    <h3>One place for your inputs.</h3>
+                    <p>Connect your keyboard and mouse through a USB hub to the ESP32-S3 controller.</p>
+                </li>
+                <li>
+                    <p class="eyebrow" aria-hidden="true">02 / Pair</p>
+                    <h3>A receiver for each computer.</h3>
+                    <p>Plug an ESP32-S2 USB receiver into each computer and pair it with the controller. Each receiver has its own number, from 1 to 7.</p>
+                </li>
+                <li>
+                    <p class="eyebrow" aria-hidden="true">03 / Switch</p>
+                    <h3>Choose where you work.</h3>
+                    <p>Double-tap <kbd>Ctrl</kbd>, then press <kbd>1</kbd>–<kbd>7</kbd> to choose a paired computer. The trigger key is configurable.</p>
+                </li>
+            </ol>
+        </section>
+
+        <aside class="project-note" aria-labelledby="note-title">
+            <h2 id="note-title">This is just the beginning.</h2>
+            <p>KMSwitcher is in active development, and this page is its new home. Hardware details, setup guides, and downloads will follow as the site grows.</p>
+        </aside>
+    </main>
+
+    <footer class="site-footer shell">
+        <p>A project by <a href="https://frank.tzanabetis.com/">Frank Tzanabetis</a>.</p>
+        <a href="/home/">Back to all projects <span aria-hidden="true">→</span></a>
+    </footer>
+</body>
+</html>
