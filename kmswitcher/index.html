@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="KMSwitcher is an ESP32-based keyboard and mouse switcher with one controller and up to seven paired computer receivers.">
-    <title>KMSwitcher | plasticcheese</title>
+    <meta name="description" content="Move between computers at the screen edge with KMSwitcher. Share a keyboard, mouse, clipboard, and files using ESP32 hardware and a Windows or Linux X11 companion.">
+    <title>KMSwitcher — Move to the edge. Keep working. | plasticcheese</title>
     <link rel="canonical" href="https://plasticcheese.com/kmswitcher/">
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="stylesheet" href="/assets/site.css">
+    <link rel="stylesheet" href="/kmswitcher/site.css">
+    <script src="/kmswitcher/edge-demo.js" defer></script>
 </head>
 <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -23,85 +25,243 @@
     </header>
 
     <main id="main" class="shell">
-        <section class="intro product-intro" aria-labelledby="product-title">
+        <section class="intro product-intro feature-hero" aria-labelledby="product-title">
             <div>
-                <p class="eyebrow">KMSwitcher</p>
+                <p class="eyebrow">KMSwitcher / One desk, more computers</p>
                 <p class="status">In development</p>
-                <h1 id="product-title">One keyboard.<br>One mouse.<br><span>More computers.</span></h1>
-                <p class="lead">Share your keyboard and mouse across computers with a dedicated ESP32 controller and a USB receiver for each computer.</p>
+                <h1 id="product-title">Move to the edge.<br><span>Keep working.</span></h1>
+                <p class="lead">Push your mouse pointer against the edge of one computer's screen to switch your shared keyboard and mouse to the next. Arrange your desk once, then move between computers as you work.</p>
                 <div class="intro-actions">
-                    <a class="button" href="#how-it-works">How it works <span aria-hidden="true">↓</span></a>
-                    <a href="/home/">All projects</a>
+                    <a class="button" href="#switching">Explore edge switching <span aria-hidden="true">↓</span></a>
+                    <a href="#features">See all features</a>
                 </div>
+                <p class="hero-support">Automatic switching uses the desktop companion on Windows or Linux X11.</p>
             </div>
 
-            <figure class="setup">
-                <p class="eyebrow">The hardware at a glance</p>
-                <div class="setup-input">
-                    <svg width="52" height="28" viewBox="0 0 52 28" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                        <rect x="1" y="1" width="50" height="26" rx="3" />
-                        <path d="M7 8h4m4 0h4m4 0h4m4 0h4m4 0h6M7 14h4m4 0h4m4 0h4m4 0h4m4 0h6M7 20h5m4 0h20m4 0h5" />
-                    </svg>
-                    <span>Keyboard + mouse</span>
-                </div>
-                <div class="setup-connection" aria-hidden="true"></div>
-                <div class="setup-controller">
-                    <strong>USB hub + controller</strong>
-                    <span>ESP32-S3</span>
-                </div>
-                <p class="setup-radio">↓ &nbsp; ESP-NOW wireless &nbsp; ↓</p>
-                <div class="setup-computers">
-                    <div class="setup-computer is-selected">
-                        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                            <rect x="3" y="4" width="26" height="18" rx="2" /><path d="M16 22v6m-6 0h12" />
-                        </svg>
-                        <span>Computer 1</span>
-                        <small>S2 · Selected</small>
+            <figure class="edge-preview" data-edge-demo data-active="1" aria-labelledby="edge-caption">
+                <p class="eyebrow">Two computers. One flow.</p>
+                <div id="edge-desktop" class="edge-desktop">
+                    <div class="demo-screen" data-computer="1">
+                        <div class="demo-title"><span class="demo-light" aria-hidden="true"></span>Computer 1</div>
+                        <div class="demo-window" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+                        <p class="demo-selection">Selected</p>
                     </div>
-                    <div class="setup-computer">
-                        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                            <rect x="3" y="4" width="26" height="18" rx="2" /><path d="M16 22v6m-6 0h12" />
-                        </svg>
-                        <span>Computer 2</span>
-                        <small>S2 receiver</small>
+                    <div class="demo-screen" data-computer="2">
+                        <div class="demo-title"><span class="demo-light" aria-hidden="true"></span>Computer 2</div>
+                        <div class="demo-window" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+                        <p class="demo-selection">Ready</p>
                     </div>
-                    <div class="setup-computer">
-                        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                            <rect x="3" y="4" width="26" height="18" rx="2" /><path d="M16 22v6m-6 0h12" />
-                        </svg>
-                        <span>Computer 3</span>
-                        <small>S2 receiver</small>
-                    </div>
+                    <svg class="demo-pointer" width="25" height="31" viewBox="0 0 25 31" aria-hidden="true"><path d="M2 2v24l6-6 5 10 5-3-5-9h10Z" fill="currentColor" stroke="#101010" stroke-width="2" /></svg>
+                    <span class="demo-edge" aria-hidden="true">screen edge</span>
                 </div>
-                <figcaption>Illustrated setup · Up to 7 paired receivers</figcaption>
+                <p class="demo-status" aria-live="polite" aria-atomic="true">Computer 1 selected. Keyboard and mouse work here.</p>
+                <button class="demo-button" type="button" aria-controls="edge-desktop" hidden>Try the illustration <span aria-hidden="true">→</span></button>
+                <figcaption id="edge-caption">Illustration of a screen-edge handoff between two computers.</figcaption>
             </figure>
         </section>
 
-        <section id="how-it-works" class="how-it-works" aria-labelledby="how-title">
-            <p class="eyebrow">A shared setup, a different destination</p>
-            <h2 id="how-title">How it works</h2>
+        <ul class="headline-features" aria-label="KMSwitcher highlights">
+            <li><a href="#switching"><span class="eyebrow">01 / Move naturally</span><strong>Switch at the screen edge.</strong><span>Left, right, above, or below.</span></a></li>
+            <li><a href="#hardware"><span class="eyebrow">02 / Share your desk</span><strong>Up to 7 computers.</strong><span>One controller, a receiver for each.</span></a></li>
+            <li><a href="#sharing"><span class="eyebrow">03 / Take it with you</span><strong>Clipboard, images &amp; files.</strong><span>Send to the computer you choose.</span></a></li>
+            <li><a href="#shortcuts"><span class="eyebrow">04 / Stay in control</span><strong>A shortcut away.</strong><span>Hardware hotkeys remain available.</span></a></li>
+        </ul>
+
+        <nav class="page-nav" aria-label="On this page">
+            <span>Explore</span>
+            <a href="#switching">Screen edges</a>
+            <a href="#sharing">Sharing</a>
+            <a href="#hardware">Hardware</a>
+            <a href="#setup">Setup</a>
+            <a href="#features">Feature list</a>
+            <a href="#compatibility">Compatibility</a>
+        </nav>
+
+        <section id="switching" class="feature-section" aria-labelledby="switching-title">
+            <div class="section-copy">
+                <p class="eyebrow">01 / Screen-edge switching</p>
+                <h2 id="switching-title">Your computers, arranged like your desk.</h2>
+                <p class="section-lead">Place your stations in the companion's layout editor. When you push through an outer screen edge, KMSwitcher finds the next ready screen in that direction and brings your keyboard and mouse with you.</p>
+            </div>
+            <dl class="feature-grid">
+                <div><dt>Go in all four directions.</dt><dd>Move left, right, up, or down. A computer above your laptop can be above it in your layout too. Receiver numbers don't dictate where screens belong.</dd></div>
+                <div><dt>Keep your multi-monitor desktop.</dt><dd>Moving between monitors on the same computer stays normal. Switching happens only at exposed outer edges, including the exposed parts of offset monitors.</dd></div>
+                <div><dt>Land on the screen you aimed for.</dt><dd>The pointer arrives just inside the destination screen that lines up with your crossing, rather than always jumping to its primary monitor. Empty gaps don't wrap around.</dd></div>
+                <div><dt>Dock a different laptop.</dt><dd>A receiver identifies the desk station. Move a laptop between docks and its station changes with it; saved station display areas keep neighbouring stations aligned as resolutions change.</dd></div>
+                <div><dt>Adapt when screens change.</dt><dd>The companion refreshes monitor geometry when you close a lid, reconnect a display, or change docks. A station can report up to 16 active monitors.</dd></div>
+                <div><dt>Skip computers that aren't ready.</dt><dd>Powered-off, stale, disabled, and unready stations are skipped. The destination companion confirms readiness and pointer placement before the controller switches input.</dd></div>
+            </dl>
+            <div class="control-note">
+                <h3>Make the edge feel right.</h3>
+                <p>Adjust the edge delay and corner exclusion to suit your desk. Held keys or mouse buttons block automatic handoffs, and a short arrival cooldown prevents bouncing straight back. Pause automatic switching locally from the tray, or pause it for the whole desk.</p>
+            </div>
+            <div id="shortcuts" class="shortcut-strip">
+                <div><p class="eyebrow">Prefer the keyboard?</p><h3>Double-tap. Pick a computer.</h3><p>Double-tap your trigger, then press a receiver number. Ctrl is the default; change the key and timing in preferences.</p></div>
+                <div class="shortcut-keys" aria-label="Ctrl, Ctrl, then a number from 1 to 7"><kbd>Ctrl</kbd><kbd>Ctrl</kbd><span>then</span><kbd>1–7</kbd></div>
+            </div>
+        </section>
+
+        <section id="sharing" class="feature-section" aria-labelledby="sharing-title">
+            <div class="section-copy">
+                <p class="eyebrow">02 / Clipboard &amp; file sharing</p>
+                <h2 id="sharing-title">Copy here. Use it over there.</h2>
+                <p class="section-lead">Copy normally, then choose a destination from the companion's tray menu. You decide when to send: copying something or crossing a screen edge never sends it automatically.</p>
+            </div>
+            <div class="sharing-types">
+                <article><p class="eyebrow">Text</p><h3>Ready for your next paste.</h3><p>Received plain Unicode text goes straight onto the destination clipboard after verification. Switch over and paste as usual.</p></article>
+                <article><p class="eyebrow">Formatting &amp; images</p><h3>Keep more than the words.</h3><p>Send HTML, RTF, and images as PNG. Accept the incoming item with <strong>Put on clipboard</strong>, then paste it into your app.</p></article>
+                <article><p class="eyebrow">Files &amp; folders</p><h3>Bring the whole folder.</h3><p>Send files, folders, and empty directories. Choose <strong>Save to…</strong> or <strong>Prepare for paste</strong> on arrival. Source files are copied and saved files aren't overwritten.</p></article>
+            </div>
+            <div class="transport-note">
+                <div><h3>Choose how content travels.</h3><p>Use encrypted paired dongles, prefer an authenticated encrypted LAN connection with dongle fallback, or allow network transfers only. Both computers' preferences are respected. No internet server is involved.</p></div>
+                <div><h3>Follow every transfer.</h3><p>See byte progress, measured rate, transport, errors, and cancellation in the transfer window. The default item limit is 256 MiB, adjustable from 1 to 2,048 MiB on each computer. LAN is the practical choice for larger transfers.</p></div>
+            </div>
+            <p class="section-footnote">Both computers need the companion running in an unlocked Windows or Linux X11 session. Non-text items leave the current clipboard untouched until accepted. Save received files you want to keep before restarting the companion; temporary received and staged items are cleared on restart.</p>
+        </section>
+
+        <section id="hardware" class="feature-section" aria-labelledby="hardware-title">
+            <div class="hardware-overview">
+                <div class="section-copy">
+                    <p class="eyebrow">03 / Dedicated hardware</p>
+                    <h2 id="hardware-title">One place for your keyboard and mouse.</h2>
+                    <p class="section-lead">An ESP32-S3 controller receives your inputs through a USB hub. An ESP32-S2 receiver stays plugged into each computer. The controller routes input over encrypted ESP-NOW radio to the selected receiver.</p>
+                    <p>Receivers stay connected as USB HID devices while you switch, so a handoff doesn't require USB re-enumeration. Manual keyboard switching works in firmware independently of the desktop companion.</p>
+                    <p>Wired USB keyboards, mice, and compatible wireless keyboard/mouse receivers can share the hub. Standard HID keyboard, pointer, scrolling, mouse-button, media, and system controls are forwarded.</p>
+                </div>
+                <figure class="setup">
+                    <p class="eyebrow">The hardware at a glance</p>
+                    <div class="setup-input">
+                        <svg width="52" height="28" viewBox="0 0 52 28" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="1" y="1" width="50" height="26" rx="3" /><path d="M7 8h4m4 0h4m4 0h4m4 0h4m4 0h6M7 14h4m4 0h4m4 0h4m4 0h4m4 0h6M7 20h5m4 0h20m4 0h5" /></svg>
+                        <span>Keyboard + mouse</span>
+                    </div>
+                    <div class="setup-connection" aria-hidden="true"></div>
+                    <div class="setup-controller"><strong>USB hub + controller</strong><span>ESP32-S3</span></div>
+                    <p class="setup-radio">↓ &nbsp; ESP-NOW wireless &nbsp; ↓</p>
+                    <div class="setup-computers">
+                        <div class="setup-computer is-selected"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="26" height="18" rx="2" /><path d="M16 22v6m-6 0h12" /></svg><span>Computer 1</span><small>S2 · Selected</small></div>
+                        <div class="setup-computer"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="26" height="18" rx="2" /><path d="M16 22v6m-6 0h12" /></svg><span>Computer 2</span><small>S2 receiver</small></div>
+                        <div class="setup-computer"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="26" height="18" rx="2" /><path d="M16 22v6m-6 0h12" /></svg><span>Computer 3</span><small>S2 receiver</small></div>
+                    </div>
+                    <figcaption>Illustrated setup · Up to 7 paired receivers</figcaption>
+                </figure>
+            </div>
+            <p class="section-footnote">Automatic input selection supports up to two physical input devices, subject to the controller's eight USB host channels. A combo receiver counts as one device; hubs also consume channels. Proprietary device reports and generic Bluetooth adapters aren't universally supported.</p>
+        </section>
+
+        <section id="setup" class="feature-section" aria-labelledby="setup-title">
+            <div class="section-copy">
+                <p class="eyebrow">04 / From hardware to your desk</p>
+                <h2 id="setup-title">Set up, pair, and put things in place.</h2>
+                <p class="section-lead">The desktop companion includes a guided device and firmware wizard. Use it for initial setup, then keep your desk layout and everyday controls close at hand.</p>
+            </div>
             <ol class="steps">
-                <li>
-                    <p class="eyebrow" aria-hidden="true">01 / Connect</p>
-                    <h3>One place for your inputs.</h3>
-                    <p>Connect your keyboard and mouse through a USB hub to the ESP32-S3 controller.</p>
-                </li>
-                <li>
-                    <p class="eyebrow" aria-hidden="true">02 / Pair</p>
-                    <h3>A receiver for each computer.</h3>
-                    <p>Plug an ESP32-S2 USB receiver into each computer and pair it with the controller. Each receiver has its own number, from 1 to 7.</p>
-                </li>
-                <li>
-                    <p class="eyebrow" aria-hidden="true">03 / Switch</p>
-                    <h3>Choose where you work.</h3>
-                    <p>Double-tap <kbd>Ctrl</kbd>, then press <kbd>1</kbd>–<kbd>7</kbd> to choose a paired computer. The trigger key is configurable.</p>
-                </li>
+                <li><p class="eyebrow" aria-hidden="true">01 / Install</p><h3>Prepare the controller and receivers.</h3><p>The wizard checks the connected chip, flash capacity, firmware checksums, and layout. It backs up pairing and settings, writes the firmware, and verifies the result.</p></li>
+                <li><p class="eyebrow" aria-hidden="true">02 / Pair</p><h3>Give each receiver a number.</h3><p>Double-tap your trigger, press <kbd>P</kbd>, then a slot <kbd>1–7</kbd>. Hold the receiver's button for about three seconds during the pairing window. Pairings survive normal restarts and firmware updates.</p></li>
+                <li><p class="eyebrow" aria-hidden="true">03 / Arrange</p><h3>Match the layout to your desk.</h3><p>Run the companion on each computer. Drag station groups into place, save the layout to the controller, and enable automatic switching. Optional login startup keeps the companion ready.</p></li>
             </ol>
         </section>
 
+        <section id="features" class="feature-section" aria-labelledby="features-title">
+            <div class="section-copy">
+                <p class="eyebrow">05 / The rest of the toolkit</p>
+                <h2 id="features-title">The details that make it your desk.</h2>
+                <p class="section-lead">Explore the everyday preferences, device tools, and automation features behind the headlines.</p>
+            </div>
+            <div class="feature-details">
+                <details open>
+                    <summary>Keyboard, mouse &amp; everyday preferences</summary>
+                    <ul>
+                        <li><strong>Your choice of trigger:</strong> Ctrl, Alt, Shift, Scroll Lock, Insert, Pause/Break, or Num Lock, with adjustable double-tap and selection timing. Top-row and keypad destination numbers are supported.</li>
+                        <li><strong>Normal shortcuts stay normal:</strong> modifier combinations keep their usual meaning; an expired selection replays the trigger taps, and Escape cancels selection.</li>
+                        <li><strong>Lock-light feedback:</strong> supported keyboards can follow the selected computer's Caps Lock, Num Lock, and Scroll Lock state.</li>
+                        <li><strong>A saved boot destination:</strong> choose a preferred receiver or automatic first-available selection.</li>
+                        <li><strong>Controller indication:</strong> choose normal RGB indication, brightness, and per-computer colours. Normal indication is off by default.</li>
+                        <li><strong>USB input control:</strong> inspect connected devices, use automatic selection, or allow specific physical devices. Saved choices survive reconnection and controller restarts.</li>
+                        <li><strong>Preference-only reset:</strong> restore everyday defaults while retaining pairings, link keys, and diagnostic history.</li>
+                    </ul>
+                </details>
+                <details>
+                    <summary>An independent mouse jiggler for each receiver</summary>
+                    <ul>
+                        <li><strong>Per-computer control:</strong> toggle the selected receiver with double-trigger then <kbd>J</kbd>, or control any reachable compatible receiver from the browser console.</li>
+                        <li><strong>Three movement modes:</strong> left/right, four-way, or random strokes. Double-trigger then <kbd>K</kbd> cycles the selected receiver's mode.</li>
+                        <li><strong>Adjustable movement:</strong> set the idle interval and movement distance. Real mouse movement or scrolling pauses the jiggler until the idle wait has passed again.</li>
+                        <li><strong>Independent operation:</strong> it can continue after you switch away, pause routing, or lose controller contact. Jiggler movement doesn't trigger screen-edge switching.</li>
+                        <li><strong>Clear restart behaviour:</strong> interval and distance are saved on the controller; each receiver restarts with its jiggler disabled in left/right mode.</li>
+                    </ul>
+                </details>
+                <details>
+                    <summary>Companion app, desk layouts &amp; tray controls</summary>
+                    <ul>
+                        <li><strong>A layout for your whole desk:</strong> up to seven stations, each reporting up to 16 active monitors, with drag-to-position groups and editable coordinates and display-area sizes.</li>
+                        <li><strong>Layout backups:</strong> export and import JSON configurations. Revision checks prevent a stale edit from silently replacing newer settings.</li>
+                        <li><strong>Local and global control:</strong> local automatic-switching preferences follow your laptop; the shared layout and global pause stay with the controller.</li>
+                        <li><strong>A background companion:</strong> closing Settings keeps the helper running. Use optional login startup, tray pause/resume, or a headless helper. Desktops without a tray keep the settings window available.</li>
+                        <li><strong>Direct receiver access:</strong> the companion talks through its local USB receiver without installing a custom kernel driver.</li>
+                        <li><strong>Explicit clipboard destinations:</strong> the tray shows each station and its current computer name, disabling unavailable destinations. Transfer policies and names follow the computer between docks.</li>
+                    </ul>
+                </details>
+                <details>
+                    <summary>Installers, firmware updates &amp; device management</summary>
+                    <ul>
+                        <li><strong>Desktop packages:</strong> Windows x64 installer and portable ZIP; Linux x64 DEB, RPM, and tar packages. Packaged setup includes firmware without requiring Python or ESP-IDF.</li>
+                        <li><strong>Guided wired installation:</strong> select the board and port, check compatibility, back up settings, then flash and verify. Normal upgrades preserve pairing and preferences.</li>
+                        <li><strong>Application updates:</strong> after the required initial wired installation or migration, update the controller through UART and one or all paired receivers over radio.</li>
+                        <li><strong>Verified updates:</strong> check firmware role, chip, image size, manifests, and SHA-256 integrity. Matching images can be skipped; receiver batches report each target separately and process the selected receiver last.</li>
+                        <li><strong>Update results:</strong> retain downloadable JSON reports, confirmed boot/image checks, and route-restoration results. Compatible OTA layouts support rollback when a new image fails startup confirmation.</li>
+                        <li><strong>Saved radio channels:</strong> choose a channel permitted by the firmware's country policy after upgrading all paired receivers. Receivers retain their pairings and can rediscover their controller after a channel change.</li>
+                    </ul>
+                </details>
+                <details>
+                    <summary>Browser console, diagnostics &amp; recovery</summary>
+                    <ul>
+                        <li><strong>A portable browser console:</strong> a single offline HTML file connects to the controller's COM/UART port in desktop Chrome or Edge. It includes a simulated-device demo.</li>
+                        <li><strong>Everyday device tools:</strong> inspect receiver identity and health, change preferences, choose USB inputs, manage radio channels, and run firmware updates.</li>
+                        <li><strong>A live terminal:</strong> command history, quick actions, downloadable logs, a maximised console view, and light, dark, or system appearance. Supported console rates range from 115,200 baud to 4 Mbaud.</li>
+                        <li><strong>Retained diagnostics:</strong> controller and receiver events, hourly statistics, build identity, and verified history downloads help investigate failures. Diagnostic storage records event codes and counters, not key values or pointer coordinates.</li>
+                        <li><strong>Connection recovery:</strong> the controller retries the selected computer through radio or USB trouble. Bounded input buffering lasts up to five seconds; expired or ambiguous input can be discarded.</li>
+                        <li><strong>USB recovery tools:</strong> retry device descriptors or perform a logical USB reconnect while retaining the selected computer and saved input choices. Automatic recovery handles detected USB stalls.</li>
+                    </ul>
+                </details>
+                <details>
+                    <summary>Scripting &amp; tools for builders</summary>
+                    <ul>
+                        <li><strong>A scriptable CLI:</strong> select computers, query status and peers, control automatic switching and startup, edit layouts, manage preferences, and run guided firmware operations from commands.</li>
+                        <li><strong>Machine-readable output:</strong> JSON results and exit codes support scripts and diagnostics. Firmware packages record source identity and hashes.</li>
+                        <li><strong>Controller consoles:</strong> use the UART terminal or the keyboard console in a text editor for commands and diagnostic output.</li>
+                        <li><strong>A Linux hardware test controller:</strong> saved device profiles, synthetic keyboard/mouse workloads, simultaneous captures, correlated reports, and controlled device restarts support development and stress testing.</li>
+                    </ul>
+                </details>
+            </div>
+        </section>
+
+        <section id="compatibility" class="feature-section" aria-labelledby="compatibility-title">
+            <div class="section-copy">
+                <p class="eyebrow">06 / What you need</p>
+                <h2 id="compatibility-title">Choose the right setup for your desktop.</h2>
+                <p class="section-lead">Screen-edge switching and clipboard sharing need a companion on each participating computer, compatible controller and receiver firmware, and a ready desktop session.</p>
+            </div>
+            <div class="compatibility-table" role="region" aria-label="Desktop compatibility" tabindex="0">
+                <table>
+                    <caption>Desktop companion support</caption>
+                    <thead><tr><th scope="col">Desktop</th><th scope="col">Screen-edge switching</th><th scope="col">Clipboard sharing</th><th scope="col">Setup &amp; configuration</th></tr></thead>
+                    <tbody>
+                        <tr><th scope="row">Windows x64</th><td>Supported</td><td>Supported</td><td>Installer or portable ZIP</td></tr>
+                        <tr><th scope="row">Linux X11, x64</th><td>Supported</td><td>Supported</td><td>DEB, RPM, or tar; glibc 2.35+</td></tr>
+                        <tr><th scope="row">Linux Wayland</th><td>Unavailable</td><td>Unavailable</td><td>Firmware setup and CLI configuration remain available</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="feature-details questions">
+                <details><summary>Does every computer need the companion?</summary><p>Install it on each computer that participates in automatic edge switching or clipboard sharing. Manual hardware shortcuts run in firmware and remain available without the companion. No custom kernel driver is installed.</p></details>
+                <details><summary>Can I drag an item straight across to another computer?</summary><p>Cross-computer dragging is future work. To move content today, copy it and explicitly send it from the tray menu, then paste or save it on the destination.</p></details>
+                <details><summary>Will every keyboard and mouse work?</summary><p>KMSwitcher reads standard USB HID descriptors, with no device-model whitelist. Compatibility still depends on the device's reports and the available USB channel budget. Proprietary touchpad gestures, vendor configuration, and arbitrary Bluetooth adapters are outside the supported standard input path. Other operating systems and device combinations need compatibility testing.</p></details>
+            </div>
+        </section>
+
         <aside class="project-note" aria-labelledby="note-title">
-            <h2 id="note-title">This is just the beginning.</h2>
-            <p>KMSwitcher is in active development, and this page is its new home. Hardware details, setup guides, and downloads will follow as the site grows.</p>
+            <h2 id="note-title">An active hardware project.</h2>
+            <p>Screen-edge and clipboard workflows have automated coverage; full desk-level hardware acceptance remains ongoing. Public downloads and detailed hardware and setup guides will be added here as the site grows.</p>
         </aside>
     </main>
 
