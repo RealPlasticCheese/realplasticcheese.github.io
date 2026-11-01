@@ -6,11 +6,14 @@ domain in `CNAME`. There is no application build or dependency installation.
 ## Pages
 
 - `/`: the original image landing page. Its image links to `/home/`.
-- `/home/`: the project directory with TinyTracker, KMSwitcher, and Frank's profile.
+- `/home/`: the project directory with TinyTracker, KMSwitcher, Security Camera
+  Viewer, TUNNELBASH, Frank's profile, and GitHub.
 - `/kmswitcher/`: the KMSwitcher feature overview, compatibility, and setup introduction.
+- `/securitycameraviewer/`: the Security Camera Viewer overview, recording and
+  integration features, setup, and compatibility notes.
 - `/tinytracker/`: the existing generated TinyTracker documentation.
 
-The home and KMSwitcher pages share `assets/site.css` and reuse the root
+The home and project pages share `assets/site.css` and reuse the root
 `plasticcheese.jpg` and favicon. The landing page keeps its separate `styles.css`.
 Add future KMSwitcher pages under `kmswitcher/`; do not edit the generated
 TinyTracker documentation as part of website layout changes.
@@ -49,3 +52,17 @@ readiness behaviour was also checked in the companion implementation. Keep the
 platform table and development-status note aligned with the source when updating
 capability claims. Integrity checks are not a claim of signed firmware, and no
 handoff-latency or transfer-throughput claims are made.
+
+## Security Camera Viewer content
+
+The project page uses the shared site styles plus `securitycameraviewer/site.css`.
+Its camera grid is a static SVG illustration with sample labels, not live footage.
+Section links and native expandable compatibility notes work without JavaScript.
+
+Content was checked against the local `SecurityCameraViewer` project's `README.md`
+and `docs/live-rewind.md`, `docs/motion-recording.md`, `docs/battery-cameras.md`,
+`docs/nvr-recordings.md`, `docs/streaming-service.md`, `docs/integrations.md`, and
+`docs/push-to-talk.md`. Keep claims aligned with the maintained Windows/Linux web
+server. The native desktop viewers are deprecated; AI models and MediaMTX are
+optional separate installs. Setup commands assume an existing project checkout;
+no public source repository or release download is currently linked.
