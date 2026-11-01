@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Watch RTSP cameras in your browser with Security Camera Viewer. Host on Windows or Linux for live rewind, local recording, motion detection, and Home Assistant integrations.">
+    <title>Security Camera Viewer | plasticcheese</title>
+    <link rel="canonical" href="https://plasticcheese.com/securitycameraviewer/">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="stylesheet" href="/assets/site.css">
+    <link rel="stylesheet" href="/securitycameraviewer/site.css">
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header shell">
+        <a class="brand" href="/home/" aria-label="plasticcheese home">
+            <img src="/plasticcheese.jpg" alt="" width="90" height="84">
+            <span class="brand-name">plasticcheese</span>
+        </a>
+        <nav class="site-nav" aria-label="Main navigation">
+            <a href="/home/">All projects</a>
+            <a href="https://frank.tzanabetis.com/">About Frank <span aria-hidden="true">↗</span></a>
+        </nav>
+    </header>
+
+    <main id="main" class="shell">
+        <section class="intro product-intro camera-hero" aria-labelledby="product-title">
+            <div>
+                <p class="eyebrow">Security Camera Viewer</p>
+                <p class="status">In development · Windows &amp; Linux</p>
+                <h1 id="product-title">Your cameras.<br>Your network.<br><span>One view.</span></h1>
+                <p class="lead">Bring your RTSP cameras and recorder channels together in a browser. Watch live, rewind a moment, or keep the footage that matters on your own server.</p>
+                <div class="intro-actions">
+                    <a class="button" href="#viewing">Explore the viewer <span aria-hidden="true">↓</span></a>
+                    <a href="#setup">How to run it</a>
+                </div>
+                <p class="camera-footnote">A local .NET web server. No browser plugins or cloud account needed for standard RTSP viewing.</p>
+            </div>
+
+            <figure class="viewer-preview" aria-labelledby="viewer-caption">
+                <div class="preview-heading"><span>CAMERA GRID</span><span>Illustration</span></div>
+                <div class="preview-grid">
+                    <div class="preview-camera">
+                        <span class="camera-label">01 / Driveway</span>
+                        <svg viewBox="0 0 240 150" fill="none" aria-hidden="true">
+                            <path d="M0 88 61 69 110 84 170 65 240 79V150H0Z" fill="#20221d" stroke="none" />
+                            <path d="M0 88 61 69 110 84 170 65 240 79M80 150l37-67h38l67 67M16 93v34m14-38v38m14-42v42m-37-18h49" />
+                            <path d="M118 83V49l32-24 33 24v40m-72-40 39-30 40 30m-52 15h23v20M201 84V54m-12 3 12-24 13 24Z" />
+                            <rect x="111" y="97" width="64" height="27" rx="5" />
+                            <path d="m119 97 9-12h29l10 12m-39-12v12m26-12v12m-33 28v5m45-5v5" />
+                            <rect class="detection-zone" x="104" y="78" width="80" height="59" rx="1" />
+                        </svg>
+                        <span class="camera-state">Live · Detection zone</span>
+                    </div>
+                    <div class="preview-camera">
+                        <span class="camera-label">02 / Front door</span>
+                        <svg viewBox="0 0 240 150" fill="none" aria-hidden="true">
+                            <path d="M28 150V16h184v134" fill="#20221d" stroke="none" />
+                            <path d="M28 150V16h184v134M82 133V35h66v98m-57-9V44h48v80m-3-37h-5m-61 47h90m-104 8h118M38 29h30m98 0h35M38 52h30m98 0h35M38 75h30m98 0h35M38 98h30m98 0h35" />
+                            <path d="M173 126h27l-4 24h-19Zm14 0V94m0 16c-17 0-22-16-22-16 16 0 22 16 22 16Zm0 6c16-1 22-16 22-16-16 0-22 16-22 16Z" />
+                        </svg>
+                        <span class="camera-state">Live</span>
+                    </div>
+                    <div class="preview-camera">
+                        <span class="camera-label">03 / Garden</span>
+                        <svg viewBox="0 0 240 150" fill="none" aria-hidden="true">
+                            <path d="M0 108q60-36 120-5t120-5v52H0Z" fill="#20221d" stroke="none" />
+                            <path d="M0 108q60-36 120-5t120-5M40 106V64m-23 0 23-44 24 44Zm125 45V54m-26 0 26-47 26 47ZM0 82h240M10 72v24m20-24v20m20-20v19m20-19v20m20-20v23m20-23v28m20-28v30m20-30v34m20-34v34m20-34v34m20-34v32m20-32v29" />
+                            <path d="M70 150q12-35 51-46m-27 46q9-24 36-44" />
+                        </svg>
+                        <span class="camera-state">Live</span>
+                    </div>
+                    <div class="preview-camera sleeping-camera">
+                        <span class="camera-label">04 / Side gate</span>
+                        <svg viewBox="0 0 240 150" fill="none" aria-hidden="true">
+                            <path d="M0 112h240v38H0Z" fill="#20221d" stroke="none" />
+                            <path d="M20 150V30h12v120m176 0V30h12v120M32 54h176M32 129h176M51 54v75m23-75v75m23-75v75m23-75v75m23-75v75m23-75v75m23-75v75M38 119l164-55" />
+                        </svg>
+                        <span class="camera-state">Waiting · Last image retained</span>
+                    </div>
+                </div>
+                <div class="preview-timeline" aria-hidden="true"><span>−2 min</span><div><i></i></div><span>Live</span></div>
+                <figcaption id="viewer-caption">Illustrated layout with sample cameras, a detection zone, and a sleeping battery camera. No live feeds.</figcaption>
+            </figure>
+        </section>
+
+        <nav class="camera-page-nav" aria-label="On this page">
+            <a href="#viewing">Live view &amp; rewind</a>
+            <a href="#recording">Recording &amp; detection</a>
+            <a href="#integrations">Connections</a>
+            <a href="#setup">Setup</a>
+            <a href="#compatibility">Compatibility</a>
+        </nav>
+
+        <section id="viewing" class="camera-section" aria-labelledby="viewing-title">
+            <div class="camera-section-heading">
+                <p class="eyebrow">01 / Live view &amp; rewind</p>
+                <h2 id="viewing-title">See the whole picture.<br>Take a closer look.</h2>
+                <p class="camera-section-lead">Use a responsive grid for the overview, then focus a camera when something catches your eye. Open the same server from another computer, tablet, or phone on your network.</p>
+            </div>
+            <div class="camera-feature-grid">
+                <article>
+                    <h3>A layout that fits.</h3>
+                    <p>Resize dividers, swap camera positions, and go fullscreen. Layouts save in each browser for different screen sizes. There is no fixed camera-count limit; capacity depends on your host and cameras.</p>
+                </article>
+                <article>
+                    <h3>Zoom, listen, enhance.</h3>
+                    <p>Draw a zoom area, scroll or pinch to zoom, and drag to pan. Listen to supported camera audio and adjust brightness, shadows, noise reduction, and sharpening without changing recordings.</p>
+                </article>
+                <article>
+                    <h3>Go back, then go live.</h3>
+                    <p>Enable a rolling memory buffer to pause, scrub, change speed, or scan backwards. Rewind the grid or a focused camera, save a selected interval, then return to live. History depends on your memory budget.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="recording" class="camera-section" aria-labelledby="recording-title">
+            <div class="recording-overview">
+                <div class="camera-section-heading">
+                    <p class="eyebrow">02 / Recording &amp; detection</p>
+                    <h2 id="recording-title">Keep the moments<br>you need.</h2>
+                    <p class="camera-section-lead">Choose a recording mode for each camera. Browse the archive by camera and date, jump to activity markers, download MP4 clips, and protect important footage from automatic cleanup.</p>
+                </div>
+                <dl class="recording-modes">
+                    <div><dt>On motion</dt><dd>Keep pre-event video in RAM and write to disk when motion triggers. Defaults include about 10 seconds before motion and 20 seconds after the last movement.</dd></div>
+                    <div><dt>Continuous</dt><dd>Save consecutive segments throughout a recording schedule, with optional motion markers.</dd></div>
+                    <div><dt>When available</dt><dd>Record whenever an intermittent RTSP feed is awake. Sleeping camera tiles can retain a timestamped last image.</dd></div>
+                </dl>
+            </div>
+            <div class="camera-feature-grid recording-features">
+                <article>
+                    <h3>Define what matters.</h3>
+                    <p>Draw rectangular or polygon zones, exclude busy areas, and set weekly schedules. Reuse detection templates and assign recording or webhook actions to individual zones.</p>
+                </article>
+                <article>
+                    <h3>Choose local detection.</h3>
+                    <p>Use adaptive motion detection, local AI object detection, or a hybrid of both. AI models are installed separately; available classes and performance depend on the model and host.</p>
+                </article>
+                <article>
+                    <h3>Manage your archive.</h3>
+                    <p>Set retention by age and storage budget. Source video is saved without re-encoding, with available audio encoded as AAC. Playback support depends on the camera codec and browser.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="integrations" class="camera-section" aria-labelledby="connections-title">
+            <div class="camera-section-heading">
+                <p class="eyebrow">03 / Connections</p>
+                <h2 id="connections-title">Part of your camera setup.</h2>
+            </div>
+            <dl class="connection-list">
+                <div><dt>RTSP &amp; ONVIF</dt><dd>Mix independent cameras and recorder channels in named configurations. Add stream addresses manually, use recorder presets, or discover ONVIF devices and their stream profiles.</dd></div>
+                <div><dt>Home Assistant &amp; API</dt><dd>Connect automations through a versioned REST API, live events, and outgoing webhooks. Scoped tokens control access to snapshots, recording triggers, temporary arming, and archive operations.</dd></div>
+                <div><dt>Share your streams</dt><dd>An optional MediaMTX companion lets other viewers and NVRs use the active configuration through RTSP and ONVIF, with discovery, snapshots, and motion events.</dd></div>
+                <div><dt>RaySharp recordings</dt><dd>Search compatible recorder archives, prepare H.264 recordings for browser playback, and export MP4 copies. This separate recorder integration currently supports video only.</dd></div>
+                <div><dt>Camera speakers</dt><dd>Hold to talk on cameras with a verified compatible ONVIF audio backchannel. Browser microphone access requires HTTPS or localhost and permission to use the microphone.</dd></div>
+            </dl>
+        </section>
+
+        <section id="setup" class="camera-section" aria-labelledby="setup-title">
+            <div class="camera-section-heading">
+                <p class="eyebrow">04 / Run it on your network</p>
+                <h2 id="setup-title">One server. A browser on each screen.</h2>
+                <p class="camera-section-lead">The maintained application is an ASP.NET Core web server for Windows and Linux. Building from a project checkout requires the .NET 10 SDK and FFmpeg on PATH. A framework-dependent published server needs the .NET 10 ASP.NET Core Runtime and FFmpeg.</p>
+            </div>
+            <div class="setup-platforms">
+                <article>
+                    <p class="eyebrow">Windows / From the project folder</p>
+                    <h3>Launch the web server.</h3>
+                    <pre><code>.\launch-web.cmd</code></pre>
+                    <p>The launcher builds the server if needed and prints its local and network addresses.</p>
+                </article>
+                <article>
+                    <p class="eyebrow">Linux / From the project folder</p>
+                    <h3>Build, then run.</h3>
+                    <pre><code>bash build-web.sh
+bash run-web.sh</code></pre>
+                    <p>For startup at boot, the project also includes a systemd service installer.</p>
+                </article>
+            </div>
+            <ol class="steps camera-setup-steps">
+                <li><p class="eyebrow" aria-hidden="true">01 / Open</p><h3>Visit the viewer.</h3><p>On the server, open <code>http://localhost:5080/</code>. On another device, use the server's LAN address on port 5080.</p></li>
+                <li><p class="eyebrow" aria-hidden="true">02 / Configure</p><h3>Add your cameras.</h3><p>Open the menu and choose <strong>Cameras &amp; configurations</strong>. Add cameras, select streams, save a configuration, and connect.</p></li>
+                <li><p class="eyebrow" aria-hidden="true">03 / Make it yours</p><h3>Choose what to keep.</h3><p>Arrange the grid, enable rewind if wanted, and configure recording, storage limits, zones, and schedules for each camera.</p></li>
+            </ol>
+        </section>
+
+        <section id="compatibility" class="camera-section" aria-labelledby="compatibility-title">
+            <div class="camera-section-heading">
+                <p class="eyebrow">05 / Before you connect</p>
+                <h2 id="compatibility-title">A few practical details.</h2>
+            </div>
+            <div class="compatibility-notes">
+                <details open>
+                    <summary>Cameras and browser playback</summary>
+                    <p>Cameras must expose an accessible RTSP stream; ONVIF discovery is optional. Automatic playback can select native video, browser software decoding, or server JPEG previews. Codec support and host resources determine which methods are available. H.264 offers broad compatibility; live rewind also needs browser H.264/AAC media support.</p>
+                </details>
+                <details>
+                    <summary>Battery cameras</summary>
+                    <p>Only cameras that publish RTSP while awake are supported. Enable the camera's NAS/RTSP feature and choose <strong>Motion-activated / battery camera</strong> in setup. Polling checks for available video; it does not wake a sleeping camera. A cloud-only camera is not made compatible by this setting.</p>
+                </details>
+                <details>
+                    <summary>Network access and phone installation</summary>
+                    <p>The default setup is intended for a trusted LAN. Enable browser sign-in and scoped API tokens through <strong>Integrations &amp; API</strong>. Use HTTPS with a certificate trusted by the device for microphone access and supported browser app installation. Compatible Android browsers can install the viewer as an app; the server must stay running and reachable.</p>
+                </details>
+                <details>
+                    <summary>Current development focus</summary>
+                    <p>New development targets the web server and browser interface. The older Windows WPF and Linux Avalonia viewers are deprecated. Optional AI models and the MediaMTX streaming companion need separate installation, and capabilities should be checked with your actual cameras.</p>
+                </details>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer shell">
+        <p>A project by <a href="https://frank.tzanabetis.com/">Frank Tzanabetis</a>.</p>
+        <a href="/home/">Back to all projects <span aria-hidden="true">→</span></a>
+    </footer>
+</body>
+</html>
