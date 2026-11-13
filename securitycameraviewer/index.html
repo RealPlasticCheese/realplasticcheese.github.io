@@ -27,12 +27,12 @@
         <section class="intro product-intro camera-hero" aria-labelledby="product-title">
             <div>
                 <p class="eyebrow">Security Camera Viewer</p>
-                <p class="status">In development · Windows &amp; Linux</p>
+                <p class="status">Self-hosted · Windows &amp; Linux</p>
                 <h1 id="product-title">Your cameras.<br>Your network.<br><span>One view.</span></h1>
                 <p class="lead">Bring your RTSP cameras and recorder channels together in a browser. Watch live, rewind a moment, or keep the footage that matters on your own server.</p>
                 <div class="intro-actions">
-                    <a class="button" href="#viewing">Explore the viewer <span aria-hidden="true">↓</span></a>
-                    <a href="#setup">How to run it</a>
+                    <a class="button" href="#setup">Download <span aria-hidden="true">↓</span></a>
+                    <a href="#viewing">Explore the viewer</a>
                 </div>
                 <p class="camera-footnote">A local .NET web server. No browser plugins or cloud account needed for standard RTSP viewing.</p>
             </div>
@@ -88,7 +88,7 @@
             <a href="#viewing">Live view &amp; rewind</a>
             <a href="#recording">Recording &amp; detection</a>
             <a href="#integrations">Connections</a>
-            <a href="#setup">Setup</a>
+            <a href="#setup">Download &amp; setup</a>
             <a href="#compatibility">Compatibility</a>
         </nav>
 
@@ -160,22 +160,21 @@
         <section id="setup" class="camera-section" aria-labelledby="setup-title">
             <div class="camera-section-heading">
                 <p class="eyebrow">04 / Run it on your network</p>
-                <h2 id="setup-title">One server. A browser on each screen.</h2>
-                <p class="camera-section-lead">The maintained application is an ASP.NET Core web server for Windows and Linux. Building from a project checkout requires the .NET 10 SDK and FFmpeg on PATH. A framework-dependent published server needs the .NET 10 ASP.NET Core Runtime and FFmpeg.</p>
+                <h2 id="setup-title">Download Security Camera Viewer.</h2>
+                <p class="camera-section-lead">Install the web server on a Windows or Linux x64 host and open the viewer from a browser. Packages include the .NET runtime and MediaMTX. The server also requires FFmpeg. Each download has a SHA-256 checksum on GitHub.</p>
+                <div class="intro-actions">
+                    <a class="button" href="https://github.com/RealPlasticCheese/SecurityCameraViewer/releases/latest">Latest release <span aria-hidden="true">↗</span></a>
+                    <a href="https://github.com/RealPlasticCheese/SecurityCameraViewer/blob/main/docs/installation.md">Installation and upgrade guide</a>
+                </div>
             </div>
             <div class="setup-platforms">
                 <article>
-                    <p class="eyebrow">Windows / From the project folder</p>
-                    <h3>Launch the web server.</h3>
-                    <pre><code>.\launch-web.cmd</code></pre>
-                    <p>The launcher builds the server if needed and prints its local and network addresses.</p>
+                    <h3>Windows x64</h3>
+                    <p>Run the setup wizard to install the server and configure it as a Windows service. The wizard can install FFmpeg through Windows Package Manager. A portable ZIP is also available.</p>
                 </article>
                 <article>
-                    <p class="eyebrow">Linux / From the project folder</p>
-                    <h3>Build, then run.</h3>
-                    <pre><code>bash build-web.sh
-bash run-web.sh</code></pre>
-                    <p>For startup at boot, the project also includes a systemd service installer.</p>
+                    <h3>Linux x64</h3>
+                    <p>Use the DEB on Ubuntu 24.04 or Linux Mint 22, or the RPM on Fedora 43. After installing, run <code>sudo security-camera-viewer-setup configure --start</code> to start the service. A portable tar.gz is also available.</p>
                 </article>
             </div>
             <ol class="steps camera-setup-steps">
@@ -204,8 +203,8 @@ bash run-web.sh</code></pre>
                     <p>The default setup is intended for a trusted LAN. Enable browser sign-in and scoped API tokens through <strong>Integrations &amp; API</strong>. Use HTTPS with a certificate trusted by the device for microphone access and supported browser app installation. Compatible Android browsers can install the viewer as an app; the server must stay running and reachable.</p>
                 </details>
                 <details>
-                    <summary>Current development focus</summary>
-                    <p>New development targets the web server and browser interface. The older Windows WPF and Linux Avalonia viewers are deprecated. Optional AI models and the MediaMTX streaming companion need separate installation, and capabilities should be checked with your actual cameras.</p>
+                    <summary>Optional features</summary>
+                    <p>Local AI detection requires a separately installed model. MediaMTX is included in the server packages and supports optional RTSP and ONVIF sharing.</p>
                 </details>
             </div>
         </section>
