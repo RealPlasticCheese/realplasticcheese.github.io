@@ -9,6 +9,7 @@ domain in `CNAME`. There is no application build or dependency installation.
 - `/home/`: the project directory with TinyTracker, KMSwitcher, Security Camera
   Viewer, TUNNELBASH, Frank's profile, and GitHub.
 - `/kmswitcher/`: the KMSwitcher feature overview, compatibility, and setup introduction.
+- `/kmswitcher/flash/`: the USB firmware installer and erase tool for the ESP32-S3 master and ESP32-S2 slave.
 - `/securitycameraviewer/`: the Security Camera Viewer overview, recording and
   integration features, setup, and compatibility notes.
 - `/tinytracker/`: the existing generated TinyTracker documentation.
@@ -52,6 +53,25 @@ readiness behaviour was also checked in the companion implementation. Keep the
 platform table and development-status note aligned with the source when updating
 capability claims. Integrity checks are not a claim of signed firmware, and no
 handoff-latency or transfer-throughput claims are made.
+
+## KMSwitcher firmware flasher
+
+The flasher uses Web Serial in desktop Chrome and Edge. Firmware and flashing
+dependencies are served from this site. An ordinary install checks for the
+release’s partition layout or blank flash before writing. The erase action
+clears the whole chip after the user confirms the detected board.
+
+To update the firmware, copy the regular firmware ZIP from a public
+[KMSwitcher release](https://github.com/RealPlasticCheese/KMSwitcher/releases)
+into `kmswitcher/flash/firmware/`. Replace the version, filename, and published
+SHA-256 in `firmware.js`, update the release link in `index.html`, and remove
+the previous ZIP. The ZIP includes the firmware license and component notices.
+Check both board layouts against the new release and run
+`node --test tests/kmswitcher-flash.test.mjs` before opening a PR.
+
+The `vendor/` directory contains the upstream browser bundles for esptool-js
+0.7.1 (including pako and atob-lite), fflate 0.8.2, and js-md5 0.8.3. Their
+licenses are in the same directory.
 
 ## Security Camera Viewer content
 
