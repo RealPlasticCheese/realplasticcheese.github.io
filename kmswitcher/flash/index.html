@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+    <meta name="description" content="Install KMSwitcher firmware on the S3 Master and S2 Slave over USB from Chrome or Edge.">
+    <title>Firmware flasher | KMSwitcher</title>
+    <link rel="canonical" href="https://plasticcheese.com/kmswitcher/flash/">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="stylesheet" href="/assets/site.css">
+    <link rel="stylesheet" href="flash.css">
+    <script src="vendor/js-md5-0.8.3.js" defer></script>
+    <script src="flash.js" type="module"></script>
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header shell">
+        <a class="brand" href="/home/" aria-label="plasticcheese home">
+            <img src="/plasticcheese.jpg" alt="" width="90" height="84">
+            <span class="brand-name">plasticcheese</span>
+        </a>
+        <nav class="site-nav" aria-label="Main navigation">
+            <a href="/kmswitcher/">← KMSwitcher</a>
+        </nav>
+    </header>
+
+    <main class="flash-shell" id="main">
+        <header class="flash-intro">
+            <p class="eyebrow">KMSwitcher</p>
+            <h1>Firmware flasher</h1>
+            <p class="lead">Install firmware on your S3 Master or S2 Slave over USB. Use desktop Chrome or Edge and connect one dongle at a time.</p>
+        </header>
+
+        <section class="flash-panel" aria-labelledby="device-title">
+            <fieldset id="board-choice" disabled>
+                <legend id="device-title">1. Choose your dongle</legend>
+                <div class="board-options">
+                    <label class="board-option">
+                        <input type="radio" name="board" value="controller" checked>
+                        <span><strong>S3 Master</strong><small>ESP32-S3 · Controller</small></span>
+                    </label>
+                    <label class="board-option">
+                        <input type="radio" name="board" value="receiver">
+                        <span><strong>S2 Slave</strong><small>ESP32-S2 · Receiver</small></span>
+                    </label>
+                </div>
+            </fieldset>
+
+            <div class="flash-step">
+                <h2>2. Plug it in</h2>
+                <p id="controller-help">Plug the S3’s <strong>COM/UART</strong> port into your computer with a USB data cable. If it won’t connect, hold <strong>BOOT</strong>, tap <strong>RST</strong>, then release <strong>BOOT</strong> and retry.</p>
+                <p id="receiver-help" hidden>Unplug the S2. Hold its <strong>BOOT</strong> button while plugging it into your computer, then release the button.</p>
+            </div>
+
+            <div class="flash-step">
+                <h2>3. Install firmware</h2>
+                <p>Select your dongle’s port when your browser asks. Leave the dongle plugged in until installation finishes.</p>
+                <button class="flash-button primary" type="button" id="install" disabled>Install firmware</button>
+                <p class="release-label">Firmware <span id="version"></span> · <a href="https://github.com/RealPlasticCheese/KMSwitcher/releases/tag/v0.2.0">Release notes</a></p>
+            </div>
+
+            <div class="flash-status" id="flash-status" data-state="idle">
+                <p id="status" role="status" aria-atomic="true">Loading the flasher…</p>
+                <progress id="progress" aria-label="Firmware installation progress" max="100" hidden></progress>
+            </div>
+            <noscript><p>Enable JavaScript in desktop Chrome or Edge to use the flasher.</p></noscript>
+        </section>
+
+        <section class="erase-panel" aria-labelledby="erase-title">
+            <div>
+                <h2 id="erase-title">Erase and start fresh</h2>
+                <p>Use this when the installer asks you to erase first, or when you want a clean start. Erasing removes the current firmware, saved settings, and pairings.</p>
+            </div>
+            <button class="flash-button secondary" type="button" id="erase" disabled>Erase flash</button>
+        </section>
+
+        <details class="flash-details">
+            <summary>Help connecting</summary>
+            <p>Close any other tab or app using the port, including KMSwitcher Firmware Setup and serial monitors. If no port appears, try a different USB data cable or USB port. For the S2, hold its button while plugging it in again.</p>
+        </details>
+        <details class="flash-details" id="technical-details" hidden>
+            <summary>Technical details</summary>
+            <pre id="log" tabindex="0"></pre>
+        </details>
+        <p class="pairing-link"><a href="/kmswitcher/#setup">How to pair your dongles after installation →</a></p>
+    </main>
+
+    <dialog id="confirm-erase" aria-labelledby="confirm-title" aria-describedby="confirm-note">
+        <h2 id="confirm-title">Erase this dongle?</h2>
+        <p class="device-id" id="erase-device"></p>
+        <p id="confirm-note">This will remove its firmware, settings, and pairings. You can install KMSwitcher firmware after erasing.</p>
+        <div class="dialog-actions">
+            <button class="flash-button secondary" type="button" id="cancel-erase" autofocus>Cancel</button>
+            <button class="flash-button danger" type="button" id="approve-erase">Erase flash</button>
+        </div>
+    </dialog>
+    <footer class="site-footer shell">
+        <p>A project by <a href="https://frank.tzanabetis.com/">Frank Tzanabetis</a>.</p>
+        <a href="/kmswitcher/">Back to KMSwitcher →</a>
+    </footer>
+</body>
+</html>
