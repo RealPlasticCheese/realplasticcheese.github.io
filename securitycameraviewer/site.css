@@ -17,97 +17,10 @@
     background: var(--surface);
 }
 
-.preview-heading,
-.camera-label,
-.camera-state,
-.preview-timeline {
-    font-family: Consolas, "Courier New", monospace;
-    font-size: 10px;
-}
-
-.preview-heading {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-bottom: 20px;
-    color: var(--muted);
-    letter-spacing: 0.08em;
-}
-
-.preview-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1px;
-    border: 1px solid #3c3d34;
-    background: #3c3d34;
-}
-
-.preview-camera {
-    min-width: 0;
-    background: #141610;
-}
-
-.camera-label,
-.camera-state {
+.viewer-preview img {
     display: block;
-    padding: 7px 8px;
-    line-height: 1.5;
-}
-
-.camera-label {
-    color: var(--text);
-}
-
-.camera-state {
-    min-height: 44px;
-    color: var(--accent);
-    font-size: 9px;
-}
-
-.preview-camera svg {
     width: 100%;
     height: auto;
-    stroke: #656c56;
-    stroke-width: 1.4;
-}
-
-.preview-camera .detection-zone {
-    stroke: var(--accent);
-    stroke-dasharray: 4 3;
-}
-
-.sleeping-camera svg {
-    opacity: 0.5;
-}
-
-.sleeping-camera .camera-state {
-    color: var(--muted);
-}
-
-.preview-timeline {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-top: 20px;
-    color: var(--muted);
-}
-
-.preview-timeline > div {
-    position: relative;
-    flex: 1;
-    height: 12px;
-    border-bottom: 1px solid #656c56;
-    background: repeating-linear-gradient(90deg, #414638 0 1px, transparent 1px 12.5%);
-}
-
-.preview-timeline i {
-    position: absolute;
-    right: 0;
-    top: -3px;
-    width: 2px;
-    height: 18px;
-    background: var(--accent);
 }
 
 .viewer-preview figcaption {
