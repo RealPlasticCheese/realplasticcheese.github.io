@@ -104,11 +104,20 @@
             <p><strong>Use an externally powered USB hub.</strong> This is the simplest option. Connect the hub’s own power supply and leave the S3’s USB-OTG jumper as it is.</p>
             <details class="flash-details">
                 <summary>Use a direct adapter or an unpowered hub instead</summary>
-                <p>On the board shown, bridging the two pads marked <strong>USB-OTG</strong> lets the S3 supply power through its native USB port. Unplug both USB cables before soldering. If your board differs or you’re unsure which pads to bridge, use a powered hub.</p>
-                <figure class="hardware-figure jumper-photo">
-                    <img src="photos/s3-otg-jumper.webp" width="850" height="932" alt="Back of the S3 with a solder bridge across the two USB-OTG pads." loading="lazy">
-                    <figcaption>The solder bridge joins the two pads beside the USB-OTG label.</figcaption>
-                </figure>
+                <p>On the board shown, bridging the two pads marked <strong>USB-OTG</strong> lets the S3 supply power through its native USB port. Unplug both USB cables and flip the board over. With the ports at the bottom, find the two pads just above the port marked <strong>USB</strong>, beside the vertical <strong>USB-OTG</strong> label. Join those two pads with solder as shown. If your board differs or you’re unsure which pads to bridge, use a powered hub.</p>
+                <div class="jumper-photos">
+                    <figure class="hardware-figure">
+                        <a class="hardware-photo" href="photos/s3-otg-location.webp">
+                            <img src="photos/s3-otg-location.webp" width="568" height="1146" alt="View the full-size rear photo of the S3. The USB-OTG pads are just above the USB port." loading="lazy">
+                            <span class="photo-marker otg-pad-marker" aria-hidden="true"></span>
+                        </a>
+                        <figcaption>Before soldering · The two marked pads on the back of the S3.</figcaption>
+                    </figure>
+                    <figure class="hardware-figure">
+                        <img src="photos/s3-otg-jumper.webp" width="850" height="932" alt="Close-up of the solder bridge joining both USB-OTG pads." loading="lazy">
+                        <figcaption>After soldering · A single bridge joins the two pads.</figcaption>
+                    </figure>
+                </div>
             </details>
         </section>
 
