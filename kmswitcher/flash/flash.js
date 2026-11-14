@@ -2,9 +2,8 @@ import { boards, readRelease, release } from './firmware.js';
 import { createConnection, eraseFirmware, EraseRequired, FlashMessage, installFirmware } from './device.js';
 
 const byId = id => document.getElementById(id);
-const boardChoice = byId('board-choice');
-const installButton = byId('install');
-const eraseButton = byId('erase');
+const flashButtons = document.querySelectorAll('[data-flash]');
+const feedback = byId('flash-feedback');
 const statusPanel = byId('flash-status');
 const status = byId('status');
 const progress = byId('progress');
@@ -20,7 +19,7 @@ function showStatus(message, state = 'idle') {
 
 function setBusy(value) {
     busy = value;
-    boardChoice.disabled = installButton.disabled = eraseButton.disabled = value;
+    for (const button of flashButtons) button.disabled = value;
 }
 
 function confirmErase(board, mac) {
@@ -43,30 +42,33 @@ async function downloadFirmware(board) {
     }
 }
 
-function showFailure(error, stage, bootHelp) {
+function showFailure(error, stage, bootHelp, board) {
     log.textContent += `${error.message || error.name}\n`;
     if (error instanceof EraseRequired) {
-        showStatus(`This dongle needs a clean start. ${bootHelp}Choose Erase flash first, then try Install firmware again. Erasing clears saved settings and pairings.`, 'erase-required');
+        showStatus(`This dongle needs a clean start. ${bootHelp}Choose Erase flash first, then try Flash ${board.label} again. Erasing clears saved settings and pairings.`, 'erase-required');
     } else if (error instanceof FlashMessage) {
         showStatus(error.message, 'error');
     } else if (stage === 'choose' && error.name === 'NotFoundError') {
-        showStatus('No port was selected. Choose Install firmware or Erase flash to try again.');
+        showStatus('No port was selected. Choose a flash or erase button to try again.');
     } else if (stage === 'choose' || stage === 'connect') {
         details.hidden = false;
         showStatus(`Could not connect to the dongle. ${bootHelp}Follow the USB instructions above, close any other app using the port, and try again.`, 'error');
     } else {
-        const action = stage === 'erase' ? 'Erase flash' : 'Install firmware';
+        const action = stage === 'erase' ? 'Erase flash' : `Flash ${board.label}`;
         showStatus(`The operation could not be completed. ${bootHelp}Check the USB connection and try ${action} again. Open Technical details for more information.`, 'error');
     }
 }
 
-async function run(action) {
+async function run(actionButton) {
     if (busy) return;
-    const board = boards[boardChoice.querySelector(':checked').value];
+    const { flash: action, board: role } = actionButton.dataset;
+    const board = boards[role];
     const bootHelp = board === boards.receiver ? 'Unplug the S2 and plug it back in while holding BOOT. ' : '';
-    const actionButton = action === 'install' ? installButton : eraseButton;
     const restoreFocus = document.activeElement === actionButton;
     setBusy(true);
+    const statusSlot = document.querySelector(`[data-flash-status="${role}"]`);
+    if (feedback.parentElement !== statusSlot) statusSlot.append(feedback);
+    feedback.hidden = false;
     log.textContent = '';
     details.hidden = true;
     details.open = false;
@@ -101,7 +103,7 @@ async function run(action) {
             showStatus('Erasing the dongle. Keep it plugged in…');
             progress.hidden = false;
             await eraseFirmware(connection.loader, window.md5);
-            showStatus(`Flash erased. ${bootHelp}Choose Install firmware.`, 'success');
+            showStatus(`Flash erased. ${bootHelp}Choose Flash ${board.label}.`, 'success');
         } else {
             stage = 'install';
             showStatus('Checking the dongle’s flash layout…');
@@ -110,10 +112,16 @@ async function run(action) {
                 if (index === 0 && written === 0) showStatus('Installing and verifying firmware. Keep the dongle plugged in…');
                 progress.value = Math.min(99, 100 * (index + written / total) / images.length);
             });
-            showStatus(`${board.label} firmware installed and verified. Unplug the dongle and plug it back in without holding BOOT.`, 'success');
+            const nextStep = role === 'receiver'
+                ? 'Unplug it and repeat this step for any other S2s. Leave BOOT released when plugging it in for pairing.'
+                : 'Unplug it and continue to step 2.';
+            showStatus(`${board.label} firmware installed and verified. ${nextStep}`, 'success');
         }
     } catch (error) {
-        showFailure(error, stage, bootHelp);
+        showFailure(error, stage, bootHelp, board);
+        if (error instanceof EraseRequired) {
+            statusSlot.nextElementSibling.open = true;
+        }
     } finally {
         try {
             await connection?.close();
@@ -128,24 +136,15 @@ async function run(action) {
     }
 }
 
-boardChoice.addEventListener('change', () => {
-    const role = boardChoice.querySelector(':checked').value;
-    byId('controller-help').hidden = role !== 'controller';
-    byId('receiver-help').hidden = role !== 'receiver';
-    details.hidden = true;
-    showStatus(`Ready to install ${boards[role].label} firmware.`);
-});
-installButton.addEventListener('click', () => run('install'));
-eraseButton.addEventListener('click', () => run('erase'));
+for (const button of flashButtons) button.addEventListener('click', () => run(button));
 byId('cancel-erase').addEventListener('click', () => dialog.close());
 byId('approve-erase').addEventListener('click', () => dialog.close('erase'));
 
 byId('version').textContent = `v${release.version}`;
 if (window.isSecureContext && navigator.serial && typeof window.md5 === 'function') {
     setBusy(false);
-    showStatus('Ready to install S3 Master firmware.');
 } else if (window.isSecureContext && navigator.serial) {
-    showStatus('The flasher could not finish loading. Refresh the page and try again.', 'error');
+    byId('browser-help').textContent = 'The flasher could not finish loading. Refresh the page and try again.';
 } else {
-    showStatus('This flasher needs USB serial access. Open this page in desktop Chrome or Edge to continue.', 'error');
+    byId('browser-help').textContent = 'Open this page in desktop Chrome or Edge to flash your dongles.';
 }

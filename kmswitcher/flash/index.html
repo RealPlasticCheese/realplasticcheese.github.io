@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
-    <meta name="description" content="Install KMSwitcher firmware on the S3 Master and S2 Slave over USB from Chrome or Edge.">
-    <title>Firmware flasher | KMSwitcher</title>
+    <meta name="description" content="Set up KMSwitcher. Flash your S3 and S2 dongles, connect your keyboard and mouse, pair your computers, and download the optional Companion.">
+    <title>Quick start | KMSwitcher</title>
     <link rel="canonical" href="https://plasticcheese.com/kmswitcher/flash/">
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="stylesheet" href="/assets/site.css">
@@ -28,62 +28,146 @@
     <main class="flash-shell" id="main">
         <header class="flash-intro">
             <p class="eyebrow">KMSwitcher</p>
-            <h1>Firmware flasher</h1>
-            <p class="lead">Install firmware on your S3 Master or S2 Slave over USB. Use desktop Chrome or Edge and connect one dongle at a time.</p>
+            <h1>Quick start</h1>
+            <p class="lead">Flash your dongles, connect your keyboard and mouse, and pair your computers. Use desktop Chrome or Edge for flashing.</p>
+            <nav class="quick-links" aria-label="Quick start sections">
+                <a href="#flash-s3">Flash dongles</a>
+                <a href="#usb-power">Connect hardware</a>
+                <a href="#pair-master">Pair computers</a>
+                <a href="#companion">Download Companion</a>
+            </nav>
         </header>
 
-        <section class="flash-panel" aria-labelledby="device-title">
-            <fieldset id="board-choice" disabled>
-                <legend id="device-title">1. Choose your dongle</legend>
-                <div class="board-options">
-                    <label class="board-option">
-                        <input type="radio" name="board" value="controller" checked>
-                        <span><strong>S3 Master</strong><small>ESP32-S3 · Controller</small></span>
-                    </label>
-                    <label class="board-option">
-                        <input type="radio" name="board" value="receiver">
-                        <span><strong>S2 Slave</strong><small>ESP32-S2 · Receiver</small></span>
-                    </label>
-                </div>
-            </fieldset>
+        <p class="firmware-label">Firmware <span id="version">v0.2.0</span> · <a href="https://github.com/RealPlasticCheese/KMSwitcher/releases/tag/v0.2.0">Release notes</a></p>
+        <p id="browser-help" role="status"></p>
+        <noscript><p>Enable JavaScript in desktop Chrome or Edge to use the flasher.</p></noscript>
 
-            <div class="flash-step">
-                <h2>2. Plug it in</h2>
-                <p id="controller-help">Plug the S3’s <strong>COM/UART</strong> port into your computer with a USB data cable. If it won’t connect, hold <strong>BOOT</strong>, tap <strong>RST</strong>, then release <strong>BOOT</strong> and retry.</p>
-                <p id="receiver-help" hidden>Unplug the S2. Hold its <strong>BOOT</strong> button while plugging it into your computer, then release the button.</p>
-            </div>
-
-            <div class="flash-step">
-                <h2>3. Install firmware</h2>
-                <p>Select your dongle’s port when your browser asks. Leave the dongle plugged in until installation finishes.</p>
-                <button class="flash-button primary" type="button" id="install" disabled>Install firmware</button>
-                <p class="release-label">Firmware <span id="version"></span> · <a href="https://github.com/RealPlasticCheese/KMSwitcher/releases/tag/v0.2.0">Release notes</a></p>
-            </div>
-
-            <div class="flash-status" id="flash-status" data-state="idle">
-                <p id="status" role="status" aria-atomic="true">Loading the flasher…</p>
-                <progress id="progress" aria-label="Firmware installation progress" max="100" hidden></progress>
-            </div>
-            <noscript><p>Enable JavaScript in desktop Chrome or Edge to use the flasher.</p></noscript>
-        </section>
-
-        <section class="erase-panel" aria-labelledby="erase-title">
+        <section class="flash-panel photo-step" id="flash-s3" aria-labelledby="s3-title">
             <div>
-                <h2 id="erase-title">Erase and start fresh</h2>
-                <p>Use this when the installer asks you to erase first, or when you want a clean start. Erasing removes the current firmware, saved settings, and pairings.</p>
+                <h2 id="s3-title">1. Flash the S3 Master</h2>
+                <p>With the components facing you and the ports at the bottom, connect the <strong>right-hand USB-C port (COM/UART)</strong> to your computer with a USB data cable.</p>
+                <p>Choose <strong>Flash S3 Master</strong>, select its serial port, and wait for verification. Then unplug the S3.</p>
+                <button class="flash-button primary" type="button" data-flash="install" data-board="controller" disabled>Flash S3 Master</button>
+                <div data-flash-status="controller">
+                    <div id="flash-feedback" hidden>
+                        <div class="flash-status" id="flash-status" data-state="idle">
+                            <p id="status" role="status" aria-atomic="true"></p>
+                            <progress id="progress" aria-label="Flashing progress" max="100" hidden></progress>
+                        </div>
+                        <details class="flash-details" id="technical-details" hidden>
+                            <summary>Technical details</summary>
+                            <pre id="log" tabindex="0"></pre>
+                        </details>
+                    </div>
+                </div>
+                <details class="flash-details">
+                    <summary>Connection help and erase</summary>
+                    <p>If the S3 won’t connect, hold <strong>BOOT</strong>, tap <strong>RST</strong>, then release BOOT and retry. Close other apps using the port and check that your cable carries data.</p>
+                    <p>Erasing clears firmware, settings, and pairings.</p>
+                    <button class="flash-button secondary" type="button" data-flash="erase" data-board="controller" disabled>Erase flash <span class="visually-hidden">on S3 Master</span></button>
+                </details>
             </div>
-            <button class="flash-button secondary" type="button" id="erase" disabled>Erase flash</button>
+            <figure class="hardware-figure">
+                <div class="hardware-photo s3-photo">
+                    <img src="photos/s3-ports.webp" width="500" height="980" alt="S3 viewed from the component side with the right USB-C port marked.">
+                    <span class="photo-marker s3-com-marker" aria-hidden="true"></span>
+                </div>
+                <figcaption>Right port · Flash and power</figcaption>
+            </figure>
         </section>
 
-        <details class="flash-details">
-            <summary>Help connecting</summary>
-            <p>Close any other tab or app using the port, including KMSwitcher Firmware Setup and serial monitors. If no port appears, try a different USB data cable or USB port. For the S2, hold its button while plugging it in again.</p>
-        </details>
-        <details class="flash-details" id="technical-details" hidden>
-            <summary>Technical details</summary>
-            <pre id="log" tabindex="0"></pre>
-        </details>
-        <p class="pairing-link"><a href="/kmswitcher/#setup">How to pair your dongles after installation →</a></p>
+        <section class="flash-panel photo-step" id="flash-s2" aria-labelledby="s2-title">
+            <div>
+                <h2 id="s2-title">2. Flash each S2 Slave</h2>
+                <p>With the S2 unplugged, hold its <strong>BOOT button</strong> while plugging it into your computer. Release the button after plugging it in.</p>
+                <p>Choose <strong>Flash S2 Slave</strong>, select its serial port, and wait for verification. Unplug it and repeat for each S2, one at a time.</p>
+                <button class="flash-button primary" type="button" data-flash="install" data-board="receiver" disabled>Flash S2 Slave</button>
+                <div data-flash-status="receiver"></div>
+                <details class="flash-details">
+                    <summary>Connection help and erase</summary>
+                    <p>If no serial port appears, unplug the S2 and hold BOOT as you reconnect it. Close other apps using the port and try another USB port.</p>
+                    <p>Erasing clears firmware, settings, and pairings.</p>
+                    <button class="flash-button secondary" type="button" data-flash="erase" data-board="receiver" disabled>Erase flash <span class="visually-hidden">on S2 Slave</span></button>
+                </details>
+            </div>
+            <figure class="hardware-figure">
+                <div class="hardware-photo">
+                    <img src="photos/s2-boot.webp" width="740" height="310" alt="S2 in a clear case with its BOOT button marked near the USB plug.">
+                    <span class="photo-marker s2-boot-marker" aria-hidden="true"></span>
+                </div>
+                <figcaption>BOOT button · Just behind the USB plug</figcaption>
+            </figure>
+        </section>
+
+        <section class="flash-panel" id="usb-power">
+            <h2>3. Power the S3’s USB accessories</h2>
+            <p><strong>Use an externally powered USB hub.</strong> This is the simplest option. Connect the hub’s own power supply and leave the S3’s USB-OTG jumper as it is.</p>
+            <details class="flash-details">
+                <summary>Use a direct adapter or an unpowered hub instead</summary>
+                <p>On the board shown, bridging the two pads marked <strong>USB-OTG</strong> lets the S3 supply power through its native USB port. Unplug both USB cables before soldering. If your board differs or you’re unsure which pads to bridge, use a powered hub.</p>
+                <figure class="hardware-figure jumper-photo">
+                    <img src="photos/s3-otg-jumper.webp" width="850" height="932" alt="Back of the S3 with a solder bridge across the two USB-OTG pads." loading="lazy">
+                    <figcaption>The solder bridge joins the two pads beside the USB-OTG label.</figcaption>
+                </figure>
+            </details>
+        </section>
+
+        <section class="flash-panel" id="connect-inputs">
+            <h2>4. Connect your keyboard and mouse</h2>
+            <p>With the S3’s components facing you and the ports at the bottom, plug the hub into the <strong>left USB-C port (USB)</strong>. If you bridged the USB-OTG pads, you can also connect a single receiver directly using a USB-C to USB-A adapter.</p>
+            <p>On a hub, connect a USB keyboard and mouse or up to two keyboard/mouse receivers. If you left the USB-OTG pads open, plug the hub into its own power supply. Then power the S3 through the <strong>right USB-C port (COM)</strong>.</p>
+            <div class="hardware-examples">
+                <figure class="hardware-figure">
+                    <a href="photos/s3-hub.webp"><img src="photos/s3-hub.webp" width="960" height="540" alt="View larger photo of the S3 with two Logitech receivers on a USB hub." loading="lazy"></a>
+                    <figcaption>Two receivers through a USB hub. The purple cable powers the S3.</figcaption>
+                </figure>
+                <figure class="hardware-figure">
+                    <a href="photos/s3-direct.webp"><img src="photos/s3-direct.webp" width="740" height="1101" alt="View larger photo of the S3 with one Logitech receiver on a short adapter." loading="lazy"></a>
+                    <figcaption>One receiver through a short adapter in the left port.</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="flash-panel" id="pair-master">
+            <h2>5. Open pairing on the S3</h2>
+            <p>Plug the first S2 into the computer you want to control. Leave its button released as you plug it in.</p>
+            <p>On the keyboard connected to the S3, quickly tap and release the same <kbd>Ctrl</kbd> key twice, then press <kbd>P</kbd>, then <kbd>1</kbd>. The S3 LED flashes blue for the 30-second pairing window.</p>
+        </section>
+
+        <section class="flash-panel" id="pair-slaves">
+            <h2>6. Pair the S2 and test switching</h2>
+            <p>Within those 30 seconds, hold the plugged-in S2’s button for about <strong>three seconds</strong>, then release it.</p>
+            <p>Double-tap <kbd>Ctrl</kbd> and press <kbd>1</kbd> to select that computer. Try typing and moving the mouse. For each additional S2, repeat steps 5 and 6 with the next number, up to <kbd>7</kbd>.</p>
+            <details class="flash-details">
+                <summary>Pairing didn’t work?</summary>
+                <p>Open pairing on the S3 again, then hold the S2’s button while it is already plugged in. If you changed the S3’s shortcut key, use your saved key in place of Ctrl.</p>
+            </details>
+        </section>
+
+        <section class="flash-panel" id="companion">
+            <h2>7. Install the optional Companion</h2>
+            <p>Keyboard switching already works after pairing. For screen-edge switching and clipboard sharing, run the Companion on each participating computer. Open <strong>Settings → Desk layout</strong>, arrange your screens, save the layout, and enable automatic switching.</p>
+            <div class="download-options">
+                <div>
+                    <h3>Windows x64</h3>
+                    <ul>
+                        <li><a href="https://github.com/RealPlasticCheese/KMSwitcher/releases/download/v0.2.0/KMSwitcher-Companion-0.2.0-windows-x64-setup.exe">Windows installer (.exe)</a></li>
+                        <li><a href="https://github.com/RealPlasticCheese/KMSwitcher/releases/download/v0.2.0/KMSwitcher-Companion-0.2.0-windows-x64-portable.zip">Windows portable ZIP</a></li>
+                    </ul>
+                    <p>For the portable version, extract the ZIP and open <code>kmswitcher-gui.exe</code>.</p>
+                </div>
+                <div>
+                    <h3>Linux x64</h3>
+                    <ul>
+                        <li><a href="https://github.com/RealPlasticCheese/KMSwitcher/releases/download/v0.2.0/kmswitcher-companion_0.2.0_amd64.deb">Ubuntu, Mint and Debian (.deb)</a></li>
+                        <li><a href="https://github.com/RealPlasticCheese/KMSwitcher/releases/download/v0.2.0/kmswitcher-companion-0.2.0-1.x86_64.rpm">Fedora (.rpm)</a></li>
+                        <li><a href="https://github.com/RealPlasticCheese/KMSwitcher/releases/download/v0.2.0/KMSwitcher-Companion-0.2.0-linux-x64.tar.gz">Linux tar archive (.tar.gz)</a></li>
+                    </ul>
+                    <p>For the tar archive, extract it and run <code>sh install.sh</code>. Screen-edge switching requires X11.</p>
+                </div>
+            </div>
+            <p class="firmware-label">Companion v0.2.0 · <a href="https://github.com/RealPlasticCheese/KMSwitcher/releases">All releases</a></p>
+        </section>
     </main>
 
     <dialog id="confirm-erase" aria-labelledby="confirm-title" aria-describedby="confirm-note">

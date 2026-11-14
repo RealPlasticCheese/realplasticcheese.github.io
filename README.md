@@ -9,7 +9,7 @@ domain in `CNAME`. There is no application build or dependency installation.
 - `/home/`: the project directory with TinyTracker, KMSwitcher, Security Camera
   Viewer, TUNNELBASH, Frank's profile, and GitHub.
 - `/kmswitcher/`: the KMSwitcher feature overview, compatibility, and setup introduction.
-- `/kmswitcher/flash/`: the USB firmware installer and erase tool for the ESP32-S3 master and ESP32-S2 slave.
+- `/kmswitcher/flash/`: the quick-start guide with USB flashing, hardware photos, pairing instructions, and Companion downloads.
 - `/securitycameraviewer/`: the Security Camera Viewer overview, recording and
   integration features, setup, and compatibility notes.
 - `/tinytracker/`: the existing generated TinyTracker documentation.
