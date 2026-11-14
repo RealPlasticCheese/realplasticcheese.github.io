@@ -47,7 +47,16 @@
 .hardware-photo img { width: 100%; }
 .s3-photo { max-width: 165px; margin-inline: auto; }
 #flash-s3 figcaption { text-align: center; }
-.jumper-photo { max-width: 270px; margin-top: 12px; }
+.jumper-photos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
+    gap: 16px;
+    max-width: 480px;
+    margin-top: 12px;
+}
+
+.jumper-photos img { width: auto; max-height: 360px; }
+.jumper-photos .hardware-photo { display: block; }
 
 .photo-marker {
     position: absolute;
@@ -59,6 +68,7 @@
 
 .s3-com-marker { left: 60%; top: 84%; width: 31%; height: 14%; }
 .s2-boot-marker { left: 42%; top: 28%; width: 13%; height: 20%; }
+.otg-pad-marker { left: 56.5%; top: 73.6%; width: 6%; height: 5.2%; border-width: 2px; }
 .flash-panel p { color: var(--muted); }
 .flash-panel strong { color: var(--text); }
 .flash-panel > p:last-child { margin-bottom: 0; }
